@@ -9,25 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let model = Model()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    struct bargainingItem {
-        var name 
-    }
     
     var offers: [String] = []
     
     @IBOutlet weak var offer: UITextView!
     @IBAction func offerButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        updateOffers()
     }
     
     func updateOffers() {
         print(" hdafadsfadsf " )
+        model.hi()
     }
 }
 

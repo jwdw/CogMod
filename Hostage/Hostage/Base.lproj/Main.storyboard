@@ -22,9 +22,6 @@
                                 <rect key="frame" x="184" y="69" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="Test:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w5w-5Z-zPD"/>
-                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-1v-ZbM">
                                 <rect key="frame" x="87" y="121" width="240" height="128"/>
@@ -68,7 +65,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="Text" destination="hIl-1v-ZbM" id="M47-I9-9PU"/>
                         <outlet property="offer" destination="Xns-Ja-pcO" id="hFl-LH-9UK"/>
                     </connections>
                 </viewController>
