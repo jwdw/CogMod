@@ -14,12 +14,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    @IBOutlet weak var Text: UITextView!
-    @IBAction func Test(_ sender: Any) {
-        print("hello")
-        Text.text = "fasdfsdf"
+    
+    struct bargainingItem {
+        var name 
     }
     
+    var offers: [String] = []
+    
+    @IBOutlet weak var offer: UITextView!
+    @IBAction func offerButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    func updateOffers() {
+        print(" hdafadsfadsf " )
+    }
 }
 
