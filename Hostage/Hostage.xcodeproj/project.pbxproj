@@ -19,6 +19,9 @@
 		396804A722313A2A00DB8273 /* Vision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804A522313A2900DB8273 /* Vision.swift */; };
 		396804A822313A2A00DB8273 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804A622313A2900DB8273 /* Support.swift */; };
 		396804AA22313E8200DB8273 /* Instantiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804A922313E8200DB8273 /* Instantiation.swift */; };
+		396804AE2231462500DB8273 /* SlotCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AB2231462500DB8273 /* SlotCondition.swift */; };
+		396804AF2231462500DB8273 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AC2231462500DB8273 /* Tokenizer.swift */; };
+		396804B02231462500DB8273 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AD2231462500DB8273 /* SlotAction.swift */; };
 		9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116AEA4222E92F300F2A6C9 /* Game.swift */; };
 		912D77702229285A00E43851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D776F2229285A00E43851 /* AppDelegate.swift */; };
 		912D77722229285A00E43851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D77712229285A00E43851 /* ViewController.swift */; };
@@ -59,6 +62,9 @@
 		396804A522313A2900DB8273 /* Vision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vision.swift; sourceTree = "<group>"; };
 		396804A622313A2900DB8273 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		396804A922313E8200DB8273 /* Instantiation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Instantiation.swift; path = "../../../ACT-R/Prisoner's Dilemma/Instantiation.swift"; sourceTree = "<group>"; };
+		396804AB2231462500DB8273 /* SlotCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotCondition.swift; sourceTree = "<group>"; };
+		396804AC2231462500DB8273 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
+		396804AD2231462500DB8273 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
 		9116AEA4222E92F300F2A6C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		912D776C2229285A00E43851 /* Hostage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D776F2229285A00E43851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +140,9 @@
 				396804A3223139E100DB8273 /* Parser.swift */,
 				3968049B223138A200DB8273 /* BufferAction.swift */,
 				3968049A223138A200DB8273 /* BufferCondition.swift */,
+				396804AD2231462500DB8273 /* SlotAction.swift */,
+				396804AB2231462500DB8273 /* SlotCondition.swift */,
+				396804AC2231462500DB8273 /* Tokenizer.swift */,
 				396804A922313E8200DB8273 /* Instantiation.swift */,
 				3968049D223138A200DB8273 /* Procedural.swift */,
 				39680499223138A200DB8273 /* Production.swift */,
@@ -298,14 +307,17 @@
 				396804972231369300DB8273 /* Declarative.swift in Sources */,
 				3968049F223138A200DB8273 /* BufferCondition.swift in Sources */,
 				9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */,
+				396804B02231462500DB8273 /* SlotAction.swift in Sources */,
 				912D77722229285A00E43851 /* ViewController.swift in Sources */,
 				912D77702229285A00E43851 /* AppDelegate.swift in Sources */,
 				3968049E223138A200DB8273 /* Production.swift in Sources */,
 				396804942231367C00DB8273 /* Model.swift in Sources */,
+				396804AE2231462500DB8273 /* SlotCondition.swift in Sources */,
 				396804AA22313E8200DB8273 /* Instantiation.swift in Sources */,
 				396804A822313A2A00DB8273 /* Support.swift in Sources */,
 				396804982231369300DB8273 /* Chunk.swift in Sources */,
 				396804A4223139E100DB8273 /* Parser.swift in Sources */,
+				396804AF2231462500DB8273 /* Tokenizer.swift in Sources */,
 				396804A2223138A200DB8273 /* Procedural.swift in Sources */,
 				396804A0223138A200DB8273 /* BufferAction.swift in Sources */,
 				396804A722313A2A00DB8273 /* Vision.swift in Sources */,

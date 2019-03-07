@@ -39,9 +39,10 @@ class Offer {
         return value
     }
     
-   
     
 }
+
+
 
 class Game {
     var playerItems :[Item] = []

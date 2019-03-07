@@ -31,12 +31,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var itemButtonView: UIView!
     @IBAction func offerButton(_ sender: Any) {
+        var playerItemsOffered: [String] = []
         for case let button as UIButton in itemButtonView.subviews {
             if button.isSelected {
-                print(button.currentTitle)
+                playerItemsOffered.append(button.currentTitle!)
             }
           
         }
+        print(playerItemsOffered)
+        public let offer = Offer(playerOffers: playerItemsOffered, opponentOffers: <#T##[Item]#>)
     }
     
     
