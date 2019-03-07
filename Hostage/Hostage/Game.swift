@@ -118,7 +118,12 @@ class Game {
     
     func evaluateOffer(playerVal: Int, hostVal: Int) {
         // act r decides to accept or reject offer
-        let relativeGainForActr: Double = Double(hostVal / playerVal)
+        let relativeGainForActr: Double
+        if playerVal != 0 {
+            relativeGainForActr = Double(hostVal / playerVal)
+        } else {
+            relativeGainForActr = 0
+        }
         if relativeGainForActr < 0.9 {
             print("No way am I gonna accept this lame offer, dummies!")
         } else if relativeGainForActr <= 1.1 {
