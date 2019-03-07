@@ -136,6 +136,7 @@
 				912D77762229285A00E43851 /* Assets.xcassets */,
 				912D77782229285A00E43851 /* LaunchScreen.storyboard */,
 				912D777B2229285A00E43851 /* Info.plist */,
+				396804952231369300DB8273 /* Declarative.swift */,
 				912D776F2229285A00E43851 /* AppDelegate.swift */,
 				396804A3223139E100DB8273 /* Parser.swift */,
 				3968049B223138A200DB8273 /* BufferAction.swift */,
@@ -150,7 +151,6 @@
 				396804A522313A2900DB8273 /* Vision.swift */,
 				3968049C223138A200DB8273 /* Temporal.swift */,
 				396804962231369300DB8273 /* Chunk.swift */,
-				396804952231369300DB8273 /* Declarative.swift */,
 			);
 			path = Hostage;
 			sourceTree = "<group>";

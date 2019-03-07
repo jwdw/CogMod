@@ -51,6 +51,8 @@ class ViewController: UIViewController {
         print(offer.getPlayerValue())
         print(offer.getOpponentValue())
         
+        
+        
     }
     
     

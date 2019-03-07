@@ -55,6 +55,22 @@ class Game {
         initOpponentItems()
     }
     
+    func initItems() {
+        let namesPlayerItems: [String] = ["Helicopter",
+                                          "Bitcoin"]
+        let noOfHostages: Int = 3
+        
+        var worthPlayerItems: [Double] = []
+        for i in 0...namesPlayerItems.count() {
+            worthPlayerItems.append(Double.random(in: 0..<1))
+        }
+        let totalWorth: Double = worthPlayerItems.reduce(0, +)
+        
+        for i in namesPlayerItems {
+            self.playerItems.append(Item(name: i.lowercased(), displayName: i, value: <#T##Int#>))
+        }
+    }
+    
     func initPlayerItems() {
         self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
         self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
