@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         print(offer.getPlayerValue())
         print(offer.getOpponentValue())
         
-        
+        game.evaluateOffer(playerVal: offer.getPlayerValue(), hostVal: offer.getOpponentValue())
         
     }
     

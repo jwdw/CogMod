@@ -116,8 +116,16 @@ class Game {
         return currentOpponentItems
     }
     
-    func evaluateOffer() {
+    func evaluateOffer(playerVal: Int, hostVal: Int) {
         // act r decides to accept or reject offer
+        let relativeGainForActr: Double = Double(hostVal / playerVal)
+        if relativeGainForActr < 0.9 {
+            print("No way am I gonna accept this lame offer, dummies!")
+        } else if relativeGainForActr <= 1.1 {
+            print("That seems fair")
+        } else {
+            print("WUAHAHAHA You're so easy to beat")
+        }
     }
     
 
