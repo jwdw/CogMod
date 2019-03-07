@@ -43,7 +43,7 @@ class Offer {
     
 }
 
-class Model {
+class Game {
     var playerItems :[Item] = []
     var opponentItems :[Item] = []
     

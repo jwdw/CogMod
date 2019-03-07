@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9116AEA5222E92F300F2A6C9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116AEA4222E92F300F2A6C9 /* Model.swift */; };
+		9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116AEA4222E92F300F2A6C9 /* Game.swift */; };
 		912D77702229285A00E43851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D776F2229285A00E43851 /* AppDelegate.swift */; };
 		912D77722229285A00E43851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D77712229285A00E43851 /* ViewController.swift */; };
 		912D77752229285A00E43851 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912D77732229285A00E43851 /* Main.storyboard */; };
@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9116AEA4222E92F300F2A6C9 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9116AEA4222E92F300F2A6C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		912D776C2229285A00E43851 /* Hostage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D776F2229285A00E43851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		912D77712229285A00E43851 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				912D77762229285A00E43851 /* Assets.xcassets */,
 				912D77782229285A00E43851 /* LaunchScreen.storyboard */,
 				912D777B2229285A00E43851 /* Info.plist */,
-				9116AEA4222E92F300F2A6C9 /* Model.swift */,
+				9116AEA4222E92F300F2A6C9 /* Game.swift */,
 			);
 			path = Hostage;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9116AEA5222E92F300F2A6C9 /* Model.swift in Sources */,
+				9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */,
 				912D77722229285A00E43851 /* ViewController.swift in Sources */,
 				912D77702229285A00E43851 /* AppDelegate.swift in Sources */,
 			);

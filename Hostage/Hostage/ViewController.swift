@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let model = Model()
+    private let game = Game()
 
     override func viewDidLoad() {
         super.viewDidLoad()
