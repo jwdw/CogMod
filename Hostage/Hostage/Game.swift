@@ -65,6 +65,26 @@ class Game {
         self.opponentItems.append(Item(name: "hostage2", displayName: "Hostage 2", value: 10000))
     }
     
+    // Loops through items to add all selected items, returns as list
+    func selectedPlayerItems(itemsStringList: [String]) -> [Item] {
+        var currentPlayerItems: [Item] = []
+        for i in self.playerItems {
+            if itemsStringList.contains(i.name) {
+                currentPlayerItems.append(i)
+            }
+        }
+        return currentPlayerItems
+    }
+    
+    // Takes as many hostage-items as indicated, in order of the opponentItem-list
+    func selectedOpponentItems(itemsInt: Int) -> [Item] {
+        var currentOpponentItems: [Item] = []
+        for i in 0..<itemsInt {
+            currentOpponentItems.append(self.opponentItems[i])
+        }
+        return currentOpponentItems
+    }
+    
     func evaluateOffer() {
         // act r decides to accept or reject offer
     }

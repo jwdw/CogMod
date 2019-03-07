@@ -34,12 +34,23 @@ class ViewController: UIViewController {
         var playerItemsOffered: [String] = []
         for case let button as UIButton in itemButtonView.subviews {
             if button.isSelected {
-                playerItemsOffered.append(button.currentTitle!)
+                playerItemsOffered.append(button.currentTitle!.lowercased())
             }
           
         }
         print(playerItemsOffered)
-        public let offer = Offer(playerOffers: playerItemsOffered, opponentOffers: <#T##[Item]#>)
+        let hostHostagesOffered:Int = Int(hostageNumber.text!)!
+        print(hostHostagesOffered)
+
+        let offer = Offer(playerOffers: game.selectedPlayerItems(itemsStringList: playerItemsOffered),
+                          opponentOffers: game.selectedOpponentItems(itemsInt: hostHostagesOffered))
+        
+        print(offer.opponentOffers)
+        print(offer.playerOffers)
+        
+        print(offer.getPlayerValue())
+        print(offer.getOpponentValue())
+        
     }
     
     
