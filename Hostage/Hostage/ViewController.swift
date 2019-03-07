@@ -20,14 +20,25 @@ class ViewController: UIViewController {
     var offers: [String] = []
     
     @IBOutlet weak var offer: UITextView!
-    @IBAction func offerButton(_ sender: UIButton) {
+    @IBAction func itemButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        updateOffers()
     }
     
-    func updateOffers() {
-        print(" hdafadsfadsf " )
-        model.hi()
+    @IBOutlet weak var hostageNumber: UILabel!
+    @IBAction func stepper(_ sender: UIStepper) {
+        hostageNumber.text = Int(sender.value).description
     }
+    
+    @IBOutlet weak var itemButtonView: UIView!
+    @IBAction func offerButton(_ sender: Any) {
+        for case let button as UIButton in itemButtonView.subviews {
+            if button.isSelected {
+                print(button.currentTitle)
+            }
+          
+        }
+    }
+    
+    
 }
 

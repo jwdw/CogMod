@@ -10,6 +10,7 @@ import Foundation
 
 struct Item {
     var name: String
+    var displayName: String
     var value: Int
 }
 
@@ -38,11 +39,15 @@ class Offer {
         return value
     }
     
+   
+    
 }
 
 class Model {
     var playerItems :[Item] = []
     var opponentItems :[Item] = []
+    
+    
     
     init() {
         initPlayerItems()
@@ -50,13 +55,13 @@ class Model {
     }
     
     func initPlayerItems() {
-        self.playerItems.append(Item(name: "helicopter", value: 999))
-        self.playerItems.append(Item(name: "bitcoin", value: 12121))
+        self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
+        self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
     }
     
     func initOpponentItems() {
-        self.opponentItems.append(Item(name: "hostage1", value: 1))
-        self.opponentItems.append(Item(name: "hostage2", value: 10000))
+        self.opponentItems.append(Item(name: "hostage1", displayName: "Hostage 1", value: 1))
+        self.opponentItems.append(Item(name: "hostage2", displayName: "Hostage 2", value: 10000))
     }
     
     func evaluateOffer() {
