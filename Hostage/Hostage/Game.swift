@@ -51,23 +51,38 @@ class Game {
     
     
     init() {
-        initPlayerItems()
-        initOpponentItems()
+        initItems()
     }
     
     func initItems() {
+        // List of Item Names for the Player
         let namesPlayerItems: [String] = ["Helicopter",
                                           "Bitcoin"]
+        // Number of Hostages and total amount, the combined Items of each side are worth
         let noOfHostages: Int = 3
+        let totalAmount: Int = 10000
         
+        // Complex way of randomly assigning value to the Police's Items
         var worthPlayerItems: [Double] = []
-        for i in 0...namesPlayerItems.count() {
+        for i in 0..<namesPlayerItems.count {
             worthPlayerItems.append(Double.random(in: 0..<1))
         }
         let totalWorth: Double = worthPlayerItems.reduce(0, +)
         
+        var itemsWorthDic: [String:Int] = [:]
+        for i in 0..<namesPlayerItems.count {
+            let tempValue: Double = worthPlayerItems[i] / totalWorth * Double(totalAmount)
+            itemsWorthDic[namesPlayerItems[i]] = Int(tempValue.rounded())
+        }
+        
+        // Creation of playerItems
         for i in namesPlayerItems {
-            self.playerItems.append(Item(name: i.lowercased(), displayName: i, value: <#T##Int#>))
+            self.playerItems.append(Item(name: i.lowercased(), displayName: i, value: itemsWorthDic[i]!))
+        }
+        
+        // Creation of Hostages, each worth the same, in total worth as much as players Items(might change)
+        for i in 0..<noOfHostages {
+            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: Int(totalAmount / noOfHostages)))
         }
     }
     
