@@ -86,15 +86,15 @@ class Game {
         }
     }
     
-    func initPlayerItems() {
-        self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
-        self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
-    }
-    
-    func initOpponentItems() {
-        self.opponentItems.append(Item(name: "hostage1", displayName: "Hostage 1", value: 1))
-        self.opponentItems.append(Item(name: "hostage2", displayName: "Hostage 2", value: 10000))
-    }
+//    func initPlayerItems() {
+//        self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
+//        self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
+//    }
+//
+//    func initOpponentItems() {
+//        self.opponentItems.append(Item(name: "hostage1", displayName: "Hostage 1", value: 1))
+//        self.opponentItems.append(Item(name: "hostage2", displayName: "Hostage 2", value: 10000))
+//    }
     
     // Loops through items to add all selected items, returns as list
     func selectedPlayerItems(itemsStringList: [String]) -> [Item] {
@@ -116,21 +116,23 @@ class Game {
         return currentOpponentItems
     }
     
-    func evaluateOffer(playerVal: Int, hostVal: Int) {
+    func evaluateOffer(playerVal: Int, hostVal: Int) -> String{
         // act r decides to accept or reject offer
+        var response: String
         let relativeGainForActr: Double
         if playerVal != 0 {
-            relativeGainForActr = Double(hostVal / playerVal)
+            relativeGainForActr = Double(playerVal / hostVal)
         } else {
             relativeGainForActr = 0
         }
         if relativeGainForActr < 0.9 {
-            print("No way am I gonna accept this lame offer, dummies!")
+            response = "No way am I gonna accept this lame offer, dummies!"
         } else if relativeGainForActr <= 1.1 {
-            print("That seems fair")
+            response = "That seems fair"
         } else {
-            print("WUAHAHAHA You're so easy to beat")
+            response = "WUAHAHAHA You're so easy to beat"
         }
+        return response
     }
     
 

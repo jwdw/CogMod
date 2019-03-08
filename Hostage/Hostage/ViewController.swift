@@ -45,16 +45,31 @@ class ViewController: UIViewController {
         let offer = Offer(playerOffers: game.selectedPlayerItems(itemsStringList: playerItemsOffered),
                           opponentOffers: game.selectedOpponentItems(itemsInt: hostHostagesOffered))
         
-        print(offer.opponentOffers)
+        
         print(offer.playerOffers)
+        print(offer.opponentOffers)
         
         print(offer.getPlayerValue())
         print(offer.getOpponentValue())
         
-        game.evaluateOffer(playerVal: offer.getPlayerValue(), hostVal: offer.getOpponentValue())
+        let response = game.evaluateOffer(playerVal: offer.getPlayerValue(), hostVal: offer.getOpponentValue())
         
+        updateResponse(response: response)
+        
+        if false {
+            updateAfterOffer()
+        }
     }
     
+    @IBOutlet weak var responseText: UITextView!
+    func updateResponse(response: String) {
+        responseText.text = response
+    }
     
+    func updateAfterOffer() {
+        print("hi")
+    }
+    
+   
 }
 
