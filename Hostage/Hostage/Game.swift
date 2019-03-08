@@ -57,7 +57,17 @@ class Game {
     func initItems() {
         // List of Item Names for the Player
         let namesPlayerItems: [String] = ["Helicopter",
-                                          "Bitcoin"]
+                                          "Bitcoin",
+                                          "Bicycle",
+                                          "Getaway Car",
+                                          "Amphetamins",
+                                          "Food",
+                                          "Weaponry",
+                                          "Apple Stock",
+                                          "Fair Trial",
+                                          "Granny's Watch",
+                                          "Retract Snipers",
+                                          "Public Statement"]
         // Number of Hostages and total amount, the combined Items of each side are worth
         let noOfHostages: Int = 3
         let totalAmount: Int = 10000
