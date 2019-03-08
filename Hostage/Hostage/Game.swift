@@ -11,7 +11,8 @@ import Foundation
 struct Item {
     var name: String
     var displayName: String
-    var value: Int
+    var valuePlayer: Int
+    var valueHost: Int
 }
 
 class Offer {
@@ -26,7 +27,7 @@ class Offer {
     func getPlayerValue() -> Int {
         var value: Int = 0
         for item in self.playerOffers {
-            value += item.value
+            value += item.valueHost
         }
         return value
     }
@@ -34,7 +35,7 @@ class Offer {
     func getOpponentValue() -> Int {
         var value: Int = 0
         for item in self.opponentOffers {
-            value += item.value
+            value += item.valueHost
         }
         return value
     }
@@ -68,11 +69,39 @@ class Game {
                                           "Granny's Watch",
                                           "Retract Snipers",
                                           "Public Statement"]
+        
+        let playerValList: [Int] = [2,
+                                    1,
+                                    1,
+                                    2,
+                                    0,
+                                    0,
+                                    2,
+                                    2,
+                                    0,
+                                    0,
+                                    1,
+                                    1]
+        
+        let hostValList: [Int] = [2,
+                                  1,
+                                  0,
+                                  1,
+                                  0,
+                                  2,
+                                  2,
+                                  0,
+                                  0,
+                                  1,
+                                  2,
+                                  1]
+        
         // Number of Hostages and total amount, the combined Items of each side are worth
         let noOfHostages: Int = 3
         let totalAmount: Int = 10000
         
         // Complex way of randomly assigning value to the Police's Items
+        /*
         var worthPlayerItems: [Double] = []
         for i in 0..<namesPlayerItems.count {
             worthPlayerItems.append(Double.random(in: 0..<1))
@@ -84,10 +113,10 @@ class Game {
             let tempValue: Double = worthPlayerItems[i] / totalWorth * Double(totalAmount)
             itemsWorthDic[namesPlayerItems[i]] = Int(tempValue.rounded())
         }
-        
+        */
         // Creation of playerItems
-        for i in namesPlayerItems {
-            self.playerItems.append(Item(name: i.lowercased(), displayName: i, value: itemsWorthDic[i]!))
+        for i in 0..<namesPlayerItems.count {
+            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], valuePlayer: playerValList[i], valueHost: hostValList[i]))
         }
         
         // Creation of Hostages, each worth the same, in total worth as much as players Items(might change)
@@ -97,8 +126,8 @@ class Game {
     }
     
 //    func initPlayerItems() {
-//        self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
-//        self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
+//       self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
+//       self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
 //    }
 //
 //    func initOpponentItems() {
