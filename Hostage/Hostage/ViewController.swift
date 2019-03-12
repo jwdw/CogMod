@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     private let game = Game()
+    
+    @IBOutlet weak var playerScore: UITextView!
+    @IBOutlet weak var opponentScore: UITextView!
 
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var totalHostageNum: UITextView!
@@ -19,6 +22,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         stepper.maximumValue = Double(game.noOfHostages)
         totalHostageNum.text = String(game.opponentItems.count)
+        playerScore.text = String(game.getPlayerScore())
+        opponentScore.text = String(game.getOpponentScore())
     }
     
     
@@ -74,10 +79,13 @@ class ViewController: UIViewController {
                 }
             }
         }
-        totalHostageNum.text = String(game.opponentItems.count)
-        stepper.maximumValue = Double(game.opponentItems.count)
+        totalHostageNum.text = String(game.noOfHostagesLeft)
+        stepper.maximumValue = Double(game.noOfHostagesLeft)
         stepper.value = 0.0
         hostageNumber.text = "0"
+        
+        playerScore.text = String(game.getPlayerScore())
+        opponentScore.text = String(game.getOpponentScore())
         
     }
     

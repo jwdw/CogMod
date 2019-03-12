@@ -52,6 +52,7 @@ class Game {
     var playerItems :[Item] = []
     var opponentItems :[Item] = []
     var noOfHostages: Int = 0
+    var noOfHostagesLeft: Int = 0
     
     init() {
         initItems()
@@ -76,23 +77,10 @@ class Game {
         
         // Number of Hostages and total amount, the combined Items of each side are worth
         noOfHostages = Int.random(in: 3 ... 10)
+        noOfHostagesLeft = noOfHostages
         let totalAmount: Int = Int(itemValues.reduce(0, +) / 2)
-        print(totalAmount)
         
-        // Complex way of randomly assigning value to the Police's Items
-        /*
-        var worthPlayerItems: [Double] = []
-        for i in 0..<namesPlayerItems.count {
-            worthPlayerItems.append(Double.random(in: 0..<1))
-        }
-        let totalWorth: Double = worthPlayerItems.reduce(0, +)
-        
-        var itemsWorthDic: [String:Int] = [:]
-        for i in 0..<namesPlayerItems.count {
-            let tempValue: Double = worthPlayerItems[i] / totalWorth * Double(totalAmount)
-            itemsWorthDic[namesPlayerItems[i]] = Int(tempValue.rounded())
-        }
-        */
+
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
             self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i], available: true))
@@ -151,11 +139,44 @@ class Game {
                 }
             }
         }
-        print(playerItems)
         
-        print(opponentItems)
-        let noOfHostagesOffered = offer.opponentOffers.count
-        opponentItems = Array(opponentItems.dropLast(noOfHostagesOffered))
-        print(opponentItems)
+        for opponentIdx in 0..<opponentItems.count {
+            for offeredIdx in 0..<offer.opponentOffers.count {
+                if opponentItems[opponentIdx].name == offer.opponentOffers[offeredIdx].name {
+                    opponentItems[opponentIdx].available = false
+                    noOfHostagesLeft -= 1
+                }
+            }
+        }
+    }
+    
+    func getPlayerScore() -> Int {
+        var value: Int = 0
+        for item in playerItems {
+            if item.available {
+                value += item.value
+            }
+        }
+        for item in opponentItems {
+            if !item.available {
+                value += item.value
+            }
+        }
+        return value
+    }
+    
+    func getOpponentScore() -> Int {
+        var value: Int = 0
+        for item in playerItems {
+            if !item.available {
+                value -= item.value
+            }
+        }
+        for item in opponentItems {
+            if item.available {
+                value += item.value
+            }
+        }
+        return value
     }
 }
