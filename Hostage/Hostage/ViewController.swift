@@ -11,10 +11,13 @@ import UIKit
 class ViewController: UIViewController {
     private let game = Game()
 
+    @IBOutlet weak var stepper: UIStepper!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        stepper.maximumValue = Double(game.noOfHostages)
     }
+    
     
     
     var offers: [String] = []
@@ -54,7 +57,7 @@ class ViewController: UIViewController {
         
         let response = game.evaluateOffer(playerVal: offer.getPlayerValue(), hostVal: offer.getOpponentValue())
         
-        updateResponse(response: response)
+        updateResponse(response: response.response)
         
         if false {
             updateAfterOffer()

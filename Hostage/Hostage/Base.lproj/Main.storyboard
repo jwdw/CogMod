@@ -194,6 +194,7 @@
                         <outlet property="hostageNumber" destination="A8Z-Nl-nQh" id="xNi-td-VGy"/>
                         <outlet property="itemButtonView" destination="Zo8-ab-cL8" id="sWl-S3-0bk"/>
                         <outlet property="responseText" destination="heb-Fr-TS6" id="K9Y-td-5qm"/>
+                        <outlet property="stepper" destination="7h7-Do-W57" id="oh1-Bk-VCv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

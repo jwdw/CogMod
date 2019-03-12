@@ -11,8 +11,12 @@ import Foundation
 struct Item {
     var name: String
     var displayName: String
-    var valuePlayer: Int
-    var valueHost: Int
+    var value: Int
+}
+
+struct Deal {
+    var deal: Bool
+    var response: String
 }
 
 class Offer {
@@ -27,7 +31,7 @@ class Offer {
     func getPlayerValue() -> Int {
         var value: Int = 0
         for item in self.playerOffers {
-            value += item.valueHost
+            value += item.value
         }
         return value
     }
@@ -35,12 +39,10 @@ class Offer {
     func getOpponentValue() -> Int {
         var value: Int = 0
         for item in self.opponentOffers {
-            value += item.valueHost
+            value += item.value
         }
         return value
     }
-    
-    
 }
 
 
@@ -48,8 +50,7 @@ class Offer {
 class Game {
     var playerItems :[Item] = []
     var opponentItems :[Item] = []
-    
-    
+    var noOfHostages: Int = 0
     
     init() {
         initItems()
@@ -70,35 +71,12 @@ class Game {
                                           "Retract Snipers",
                                           "Public Statement"]
         
-        let playerValList: [Int] = [2,
-                                    1,
-                                    1,
-                                    2,
-                                    0,
-                                    0,
-                                    2,
-                                    2,
-                                    0,
-                                    0,
-                                    1,
-                                    1]
-        
-        let hostValList: [Int] = [2,
-                                  1,
-                                  0,
-                                  1,
-                                  0,
-                                  2,
-                                  2,
-                                  0,
-                                  0,
-                                  1,
-                                  2,
-                                  1]
+        let itemValues: [Int] = [100, 50, 20, 50, 20, 10, 20, 70, 60, 100, 70, 20]
         
         // Number of Hostages and total amount, the combined Items of each side are worth
-        let noOfHostages: Int = 3
-        let totalAmount: Int = 10000
+        noOfHostages = Int.random(in: 3 ... 10)
+        let totalAmount: Int = Int(itemValues.reduce(0, +) / 2)
+        print(totalAmount)
         
         // Complex way of randomly assigning value to the Police's Items
         /*
@@ -116,7 +94,7 @@ class Game {
         */
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
-            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], valuePlayer: playerValList[i], valueHost: hostValList[i]))
+            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i]))
         }
         
         // Creation of Hostages, each worth the same, in total worth as much as players Items(might change)
@@ -155,7 +133,7 @@ class Game {
         return currentOpponentItems
     }
     
-    func evaluateOffer(playerVal: Int, hostVal: Int) -> String{
+    func evaluateOffer(playerVal: Int, hostVal: Int) -> Deal{
         // act r decides to accept or reject offer
         var response: String
         let relativeGainForActr: Double
@@ -165,14 +143,16 @@ class Game {
             relativeGainForActr = 0
         }
         if relativeGainForActr < 0.9 {
-            response = "No way am I gonna accept this lame offer, dummies!"
-        } else if relativeGainForActr <= 1.1 {
-            response = "That seems fair"
+            // TODO: make counteroffer
+            return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
         } else {
-            response = "WUAHAHAHA You're so easy to beat"
+            makeDeal()
+            return Deal(deal: true, response: "That seems fair")
         }
-        return response
     }
     
-
+    
+    func makeDeal() {
+        // Update values
+    }
 }
