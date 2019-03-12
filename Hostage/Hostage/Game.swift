@@ -12,6 +12,7 @@ struct Item {
     var name: String
     var displayName: String
     var value: Int
+    var available: Bool // traded or not
 }
 
 struct Deal {
@@ -94,24 +95,14 @@ class Game {
         */
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
-            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i]))
+            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i], available: true))
         }
         
         // Creation of Hostages, each worth the same, in total worth as much as players Items(might change)
         for i in 0..<noOfHostages {
-            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: Int(totalAmount / noOfHostages)))
+            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: Int(totalAmount / noOfHostages), available: true))
         }
     }
-    
-//    func initPlayerItems() {
-//       self.playerItems.append(Item(name: "helicopter", displayName: "Helicopter", value: 999))
-//       self.playerItems.append(Item(name: "bitcoin", displayName: "Bitcoin", value: 12121))
-//    }
-//
-//    func initOpponentItems() {
-//        self.opponentItems.append(Item(name: "hostage1", displayName: "Hostage 1", value: 1))
-//        self.opponentItems.append(Item(name: "hostage2", displayName: "Hostage 2", value: 10000))
-//    }
     
     // Loops through items to add all selected items, returns as list
     func selectedPlayerItems(itemsStringList: [String]) -> [Item] {
@@ -133,12 +124,11 @@ class Game {
         return currentOpponentItems
     }
     
-    func evaluateOffer(playerVal: Int, hostVal: Int) -> Deal{
+    func evaluateOffer(offer: Offer) -> Deal{
         // act r decides to accept or reject offer
-        var response: String
         let relativeGainForActr: Double
-        if playerVal != 0 {
-            relativeGainForActr = Double(playerVal / hostVal)
+        if offer.getPlayerValue() != 0 {
+            relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
         } else {
             relativeGainForActr = 0
         }
@@ -146,13 +136,21 @@ class Game {
             // TODO: make counteroffer
             return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
         } else {
-            makeDeal()
+            makeDeal(offer: offer)
             return Deal(deal: true, response: "That seems fair")
         }
     }
     
     
-    func makeDeal() {
+    func makeDeal(offer: Offer) {
         // Update values
+        for playerIdx in 0..<playerItems.count {
+            for offeredIdx in 0..<offer.playerOffers.count {
+                if playerItems[playerIdx].name == offer.playerOffers[offeredIdx].name {
+                    playerItems[playerIdx].available = false
+                }
+            }
+        }
+        print(playerItems)
     }
 }

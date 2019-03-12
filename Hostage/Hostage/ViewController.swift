@@ -55,12 +55,12 @@ class ViewController: UIViewController {
         print(offer.getPlayerValue())
         print(offer.getOpponentValue())
         
-        let response = game.evaluateOffer(playerVal: offer.getPlayerValue(), hostVal: offer.getOpponentValue())
+        let response = game.evaluateOffer(offer: offer)
         
         updateResponse(response: response.response)
         
-        if false {
-            updateAfterOffer()
+        if response.deal {
+            updateUIAfterOffer()
         }
     }
     
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         responseText.text = response
     }
     
-    func updateAfterOffer() {
+    func updateUIAfterOffer() {
         print("hi")
     }
     
