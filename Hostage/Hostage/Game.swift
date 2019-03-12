@@ -153,8 +153,8 @@ class Game {
     func getPlayerScore() -> Int {
         var value: Int = 0
         for item in playerItems {
-            if item.available {
-                value += item.value
+            if !item.available {
+                value -= item.value
             }
         }
         for item in opponentItems {
@@ -169,12 +169,12 @@ class Game {
         var value: Int = 0
         for item in playerItems {
             if !item.available {
-                value -= item.value
+                value += item.value
             }
         }
         for item in opponentItems {
-            if item.available {
-                value += item.value
+            if !item.available {
+                value -= item.value
             }
         }
         return value
