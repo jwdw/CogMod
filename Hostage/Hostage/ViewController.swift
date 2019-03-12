@@ -71,6 +71,17 @@ class ViewController: UIViewController {
     
     func updateUIAfterOffer() {
         print("hi")
+        for case let button as UIButton in itemButtonView.subviews {
+            for playerItem in game.playerItems {
+                if button.titleLabel?.text?.lowercased() == playerItem.name {
+                    if !playerItem.available {
+                        print("adsfadsfdsfafasfd")
+                        button.isEnabled = false
+                        button.isSelected = false
+                    }
+                }
+            }
+        }
     }
     
    
