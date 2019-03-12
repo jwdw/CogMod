@@ -152,5 +152,10 @@ class Game {
             }
         }
         print(playerItems)
+        
+        print(opponentItems)
+        let noOfHostagesOffered = offer.opponentOffers.count
+        opponentItems = Array(opponentItems.dropLast(noOfHostagesOffered))
+        print(opponentItems)
     }
 }

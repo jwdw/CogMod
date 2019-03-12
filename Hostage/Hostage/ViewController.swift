@@ -12,17 +12,19 @@ class ViewController: UIViewController {
     private let game = Game()
 
     @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var totalHostageNum: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         stepper.maximumValue = Double(game.noOfHostages)
+        totalHostageNum.text = String(game.opponentItems.count)
     }
     
     
     
     var offers: [String] = []
     
-    @IBOutlet weak var offer: UITextView!
     @IBAction func itemButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
@@ -41,19 +43,11 @@ class ViewController: UIViewController {
             }
           
         }
-        print(playerItemsOffered)
+        
         let hostHostagesOffered:Int = Int(hostageNumber.text!)!
-        print(hostHostagesOffered)
-
         let offer = Offer(playerOffers: game.selectedPlayerItems(itemsStringList: playerItemsOffered),
                           opponentOffers: game.selectedOpponentItems(itemsInt: hostHostagesOffered))
         
-        
-        print(offer.playerOffers)
-        print(offer.opponentOffers)
-        
-        print(offer.getPlayerValue())
-        print(offer.getOpponentValue())
         
         let response = game.evaluateOffer(offer: offer)
         
@@ -70,18 +64,21 @@ class ViewController: UIViewController {
     }
     
     func updateUIAfterOffer() {
-        print("hi")
         for case let button as UIButton in itemButtonView.subviews {
             for playerItem in game.playerItems {
                 if button.titleLabel?.text?.lowercased() == playerItem.name {
                     if !playerItem.available {
-                        print("adsfadsfdsfafasfd")
                         button.isEnabled = false
                         button.isSelected = false
                     }
                 }
             }
         }
+        totalHostageNum.text = String(game.opponentItems.count)
+        stepper.maximumValue = Double(game.opponentItems.count)
+        stepper.value = 0.0
+        hostageNumber.text = "0"
+        
     }
     
    
