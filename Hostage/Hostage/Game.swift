@@ -53,6 +53,9 @@ class Game {
     var opponentItems :[Item] = []
     var noOfHostages: Int = 0
     var noOfHostagesLeft: Int = 0
+    var model = Model()
+    var dm = Declarative()
+    var chunkNum = 0
     
     init() {
         initItems()
@@ -113,10 +116,21 @@ class Game {
     }
     
     func evaluateOffer(offer: Offer) -> Deal{
+        
+        var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
+        currentFeedBackChunk?.setSlot(slot: "dasdf", value: "ewrqerewq")
+        currentFeedBackChunk?.setS
+        model.dm.addToDM(currentFeedBackChunk!)
+        print(model.dm.chunks)
+        print("hi")
+        chunkNum += 1
+        
         // act r decides to accept or reject offer
         let relativeGainForActr: Double
-        if offer.getPlayerValue() != 0 {
+        if offer.getPlayerValue() != 0 && offer.getOpponentValue() != 0{
             relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
+        } else if offer.getOpponentValue() == 0 {
+            relativeGainForActr = 999999
         } else {
             relativeGainForActr = 0
         }

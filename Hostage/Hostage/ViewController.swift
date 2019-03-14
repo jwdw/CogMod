@@ -87,6 +87,8 @@ class ViewController: UIViewController {
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
         
+        
+        
     }
     
    
