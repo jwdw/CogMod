@@ -88,7 +88,6 @@ class Game {
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
             self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i%3], opponentValue: opponentItemValues[i], available: true))
-            print(String(playerItems[i].name)+"\n", String(playerItems[i].opponentValue)+"\n", String(playerItems[i].value)+"\n")
         }
         
         // Creation of Hostages, each worth the same
