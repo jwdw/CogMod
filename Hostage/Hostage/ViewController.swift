@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerScore: UITextView!
     @IBOutlet weak var opponentScore: UITextView!
 
+    @IBOutlet weak var feedbackTextField: UITextView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var totalHostageNum: UITextView!
     
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
         totalHostageNum.text = String(game.opponentItems.count)
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
+        feedbackTextField.text = "Gimme a " + game.getPrefs() + " or heads are gonna roll!"
     }
     
     

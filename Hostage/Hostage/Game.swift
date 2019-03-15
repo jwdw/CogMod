@@ -12,6 +12,7 @@ struct Item {
     var name: String
     var displayName: String
     var value: Int
+    var opponentValue: Int
     var available: Bool // traded or not
 }
 
@@ -40,7 +41,7 @@ class Offer {
     func getOpponentValue() -> Int {
         var value: Int = 0
         for item in self.opponentOffers {
-            value += item.value
+            value += item.opponentValue
         }
         return value
     }
@@ -63,9 +64,9 @@ class Game {
     
     func initItems() {
         // List of Item Names for the Player
-        let namesPlayerItems: [String] = ["Helicopter",
+        let namesPlayerItems: [String] = ["Bicycle",
                                           "Getaway Car",
-                                          "Bicycle",
+                                          "Helicopter",
                                           "Food",
                                           "Amphetamins",
                                           "Weaponry",
@@ -77,20 +78,22 @@ class Game {
                                           "Fair Trial"]
         
         let itemValues: [Int] = [10, 20, 50]
+        let opponentItemValues: [Int] = itemValues.shuffled() + itemValues.shuffled() + itemValues.shuffled() + itemValues.shuffled()
         
-        // Number of Hostages and total amount, the combined Items of each side are worth
-        noOfHostages = Int.random(in: 3 ... 10)
+        // Number of Hostages, max of 9 to ensure item and hostage values can never be the same
+        noOfHostages = Int.random(in: 3 ... 9)
         noOfHostagesLeft = noOfHostages
         
 
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
-            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i%3], available: true))
+            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i%3], opponentValue: opponentItemValues[i], available: true))
+            print(String(playerItems[i].name)+"\n", String(playerItems[i].opponentValue)+"\n", String(playerItems[i].value)+"\n")
         }
         
-        // Creation of Hostages, each worth the same, in total worth as much as players Items(might change)
+        // Creation of Hostages, each worth the same
         for i in 0..<noOfHostages {
-            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: 37, available: true))
+            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: 37, opponentValue: 37, available: true))
         }
     }
     
@@ -190,5 +193,15 @@ class Game {
             }
         }
         return value
+    }
+    
+    func getPrefs() -> String {
+        var prefs: [String] = []
+        for item in playerItems {
+            if item.opponentValue == 50 {
+                prefs.append(item.displayName)
+            }
+        }
+        return prefs.shuffled()[0]
     }
 }

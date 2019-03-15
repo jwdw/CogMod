@@ -233,6 +233,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="feedbackTextField" destination="heb-Fr-TS6" id="fEQ-rs-O94"/>
                         <outlet property="hostageNumber" destination="A8Z-Nl-nQh" id="xNi-td-VGy"/>
                         <outlet property="itemButtonView" destination="Zo8-ab-cL8" id="sWl-S3-0bk"/>
                         <outlet property="opponentScore" destination="v0L-oz-91O" id="b0D-uM-4sI"/>
