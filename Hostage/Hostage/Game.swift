@@ -64,34 +64,33 @@ class Game {
     func initItems() {
         // List of Item Names for the Player
         let namesPlayerItems: [String] = ["Helicopter",
-                                          "Bitcoin",
-                                          "Bicycle",
                                           "Getaway Car",
-                                          "Amphetamins",
+                                          "Bicycle",
                                           "Food",
+                                          "Amphetamins",
                                           "Weaponry",
-                                          "Apple Stock",
-                                          "Fair Trial",
+                                          "Bitcoin",
                                           "Granny's Watch",
+                                          "Apple Stock",
+                                          "Public Statement",
                                           "Retract Snipers",
-                                          "Public Statement"]
+                                          "Fair Trial"]
         
-        let itemValues: [Int] = [100, 50, 20, 50, 20, 10, 20, 70, 60, 100, 70, 20]
+        let itemValues: [Int] = [10, 20, 50]
         
         // Number of Hostages and total amount, the combined Items of each side are worth
         noOfHostages = Int.random(in: 3 ... 10)
         noOfHostagesLeft = noOfHostages
-        let totalAmount: Int = Int(itemValues.reduce(0, +) / 2)
         
 
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
-            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i], available: true))
+            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i%3], available: true))
         }
         
         // Creation of Hostages, each worth the same, in total worth as much as players Items(might change)
         for i in 0..<noOfHostages {
-            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: Int(totalAmount / noOfHostages), available: true))
+            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: 37, available: true))
         }
     }
     
