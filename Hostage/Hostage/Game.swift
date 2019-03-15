@@ -77,6 +77,7 @@ class Game {
                                           "Public Statement"]
         
         let itemValues: [Int] = [100, 50, 20, 50, 20, 10, 20, 70, 60, 100, 70, 20]
+        let 
         
         // Number of Hostages and total amount, the combined Items of each side are worth
         noOfHostages = Int.random(in: 3 ... 10)
@@ -119,7 +120,6 @@ class Game {
         
         var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
         currentFeedBackChunk?.setSlot(slot: "dasdf", value: "ewrqerewq")
-        currentFeedBackChunk?.setS
         model.dm.addToDM(currentFeedBackChunk!)
         print(model.dm.chunks)
         print("hi")
