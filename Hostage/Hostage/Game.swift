@@ -118,7 +118,6 @@ class Game {
         
         var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
         currentFeedBackChunk?.setSlot(slot: "dasdf", value: "ewrqerewq")
-        currentFeedBackChunk?.setS
         model.dm.addToDM(currentFeedBackChunk!)
         print(model.dm.chunks)
         print("hi")
