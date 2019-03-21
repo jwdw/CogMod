@@ -52,7 +52,7 @@ class Offer {
 class Game {
     var playerItems :[Item] = []
     var opponentItems :[Item] = []
-    var noOfHostages: Int = 0
+    var noOfHostages: Int
     var noOfHostagesLeft: Int = 0
     var model = Model()
 //    var dm = Declarative()
@@ -60,7 +60,10 @@ class Game {
     var currentChunks :[Chunk] = []
 
     
-    init() {
+    init(hosNum: Int) {
+        
+        noOfHostages = hosNum
+        noOfHostagesLeft = noOfHostages
         initItems()
     }
     
@@ -81,11 +84,6 @@ class Game {
         
         let itemValues: [Int] = [10, 20, 50]
         let opponentItemValues: [Int] = itemValues.shuffled() + itemValues.shuffled() + itemValues.shuffled() + itemValues.shuffled()
-        
-        // Number of Hostages, max of 9 to ensure item and hostage values can never be the same
-        noOfHostages = Int.random(in: 3 ... 9)
-        noOfHostagesLeft = noOfHostages
-        
 
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {

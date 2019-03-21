@@ -8,8 +8,33 @@
 
 import UIKit
 
+var hostageNum = 7
+class StartViewController: UIViewController {
+    private let aggressOptions = ["Low", "Normal", "High"]
+    
+    @IBOutlet weak var hostageNumSlider: UISlider!
+    @IBOutlet weak var hostageNumSliderLabel: UILabel!
+    @IBAction func hostageNumFunc(_ sender: UISlider) {
+        hostageNum = Int(sender.value)
+        hostageNumSliderLabel.text = "\(hostageNum)"
+    }
+    
+    @IBOutlet weak var aggressNumSlider: UISlider!
+    @IBOutlet weak var aggressNumSliderLabel: UILabel!
+    @IBAction func aggressNumFunc(_ sender: UISlider) {
+        let aggressNum = Int(sender.value)
+        aggressNumSliderLabel.text = aggressOptions[aggressNum]
+    }
+    
+    @IBAction func startGameFunc(_ sender: Any) {
+        performSegue(withIdentifier: "startSegue", sender: self)
+    }
+    
+    
+}
+
 class ViewController: UIViewController {
-    private let game = Game()
+    private let game = Game(hosNum: hostageNum)
     
     @IBOutlet weak var playerScore: UITextView!
     @IBOutlet weak var opponentScore: UITextView!
