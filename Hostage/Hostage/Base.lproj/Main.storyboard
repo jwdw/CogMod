@@ -137,25 +137,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbQ-Oa-i5I">
-                                        <rect key="frame" x="33" y="212" width="47" height="30"/>
+                                        <rect key="frame" x="18" y="212" width="77" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Bitcoin"/>
+                                        <state key="normal" title="Bitcoin: 💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ow1-IG-xTV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOX-QP-RLn">
-                                        <rect key="frame" x="12" y="82" width="88" height="30"/>
+                                        <rect key="frame" x="-12" y="82" width="138" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Getaway Car"/>
+                                        <state key="normal" title="Getaway Car: 💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h5x-v0-eBi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrH-OH-gSy">
-                                        <rect key="frame" x="21" y="120" width="71" height="30"/>
+                                        <rect key="frame" x="-15" y="120" width="143" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Helicopter"/>
+                                        <state key="normal" title="Helicopter: 💰💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yJ0-Tv-Mj7"/>
                                         </connections>
@@ -182,25 +182,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfu-dn-EfE">
-                                        <rect key="frame" x="1" y="250" width="108" height="30"/>
+                                        <rect key="frame" x="-24" y="250" width="159" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Granny's Watch"/>
+                                        <state key="normal" title="Granny's Watch: 💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WVN-se-bJs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQE-Tu-0Se">
-                                        <rect key="frame" x="15" y="288" width="83" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Apple Stock"/>
-                                        <connections>
-                                            <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ceb-mm-jvw"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uL-Cp-ByW">
-                                        <rect key="frame" x="196" y="82" width="95" height="30"/>
+                                        <rect key="frame" x="172" y="82" width="145" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Amphetamins"/>
+                                        <state key="normal" title="Amphetamins: 💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="694-zL-kgp"/>
                                         </connections>
@@ -208,7 +200,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AfA-P9-wIm">
                                         <rect key="frame" x="194" y="44" width="98" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Food"/>
+                                        <state key="normal" title="Food: 💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IBc-Zs-vvf"/>
                                         </connections>
@@ -221,43 +213,51 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY5-at-vvH">
-                                        <rect key="frame" x="214" y="288" width="58" height="30"/>
+                                        <rect key="frame" x="179" y="288" width="129" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Fair Trial"/>
+                                        <state key="normal" title="Fair Trial: 💰💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iQp-ut-aNC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilr-h9-4YH">
-                                        <rect key="frame" x="190" y="250" width="106" height="30"/>
+                                        <rect key="frame" x="166" y="250" width="156" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Retract Snipers"/>
+                                        <state key="normal" title="Retract Snipers: 💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o20-Ja-cVp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v3-LV-HUv">
-                                        <rect key="frame" x="185" y="212" width="117" height="30"/>
+                                        <rect key="frame" x="170" y="212" width="147" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Public Statement"/>
+                                        <state key="normal" title="Public Statement: 💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rxP-Nb-gjO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUC-EU-jHE">
-                                        <rect key="frame" x="31" y="44" width="49" height="30"/>
+                                        <rect key="frame" x="16" y="44" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Bicycle"/>
+                                        <state key="normal" title="Bicycle: 💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C0B-1Q-Yyw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUz-vZ-cNL">
-                                        <rect key="frame" x="208" y="120" width="70" height="30"/>
+                                        <rect key="frame" x="173" y="120" width="141" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Weaponry"/>
+                                        <state key="normal" title="Weaponry: 💰💰💰"/>
                                         <connections>
                                             <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IH5-dn-y8w"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQE-Tu-0Se">
+                                        <rect key="frame" x="-20" y="288" width="154" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Apple Stock: 💰💰💰"/>
+                                        <connections>
+                                            <action selector="itemButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ceb-mm-jvw"/>
                                         </connections>
                                     </button>
                                 </subviews>
