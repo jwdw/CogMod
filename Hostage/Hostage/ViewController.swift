@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         var playerItemsOffered: [String] = []
         for case let button as UIButton in itemButtonView.subviews {
             if button.isSelected {
-                playerItemsOffered.append(button.currentTitle!.lowercased())
+                playerItemsOffered.append(button.currentTitle!.lowercased().components(separatedBy: ":")[0])
             }
           
         }
