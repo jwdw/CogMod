@@ -114,10 +114,20 @@ class ViewController: UIViewController {
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
         
-        
+        if Int(totalHostageNum.text) == 0 {
+            performSegue(withIdentifier: "endSegue", sender: self)
+        }
         
     }
     
    
 }
 
+class EndViewController: UIViewController {
+    
+    @IBAction func backMenu(_ sender: UIButton) {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion:nil)
+    }
+    
+    
+}
