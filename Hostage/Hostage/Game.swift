@@ -58,6 +58,7 @@ class Game {
 //    var dm = Declarative()
     var chunkNum = 0
     var currentChunks :[Chunk] = []
+
     
     init() {
         initItems()
@@ -119,30 +120,33 @@ class Game {
     
     func evaluateOffer(offer: Offer) -> Deal{
         var relativeGainForActr: Double
-        relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
+        print(offer.getPlayerValue())
+        print(offer.getOpponentValue())
+        relativeGainForActr = Double(offer.getPlayerValue()) / Double(offer.getOpponentValue())
+        print(relativeGainForActr)
+
         
         // retrieve chunk
-        let offerChunk: Chunk? = Chunk(s: "", m: Model())
-        offerChunk?.setSlot(slot: "value", value: relativeGainForActr)
-        let chunk = model.dm.retrieve(chunk: offerChunk!)
+        let offerChunk: Chunk = Chunk(s: "", m: Model())
+        offerChunk.setSlot(slot: "value", value: "")
         
+        func masmitch(_: Value, _: Value) -> Double? {
+            return 0.0
+        }
+        
+        let chunk = model.dm.partialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
+        print("hi")
         print(chunk)
+        print("bye")
+        
+        model.time += 2
         
         // create feedback chunk
         var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
-        currentFeedBackChunk?.setSlot(slot: "value", value: relativeGainForActr)
+        currentFeedBackChunk?.setSlot(slot: "value", value: Double.random(in: 0.7..<0.9))
         model.dm.addToDM(currentFeedBackChunk!)
-        
         currentChunks.append(currentFeedBackChunk!)
-
         
-        for item in offer.playerOffers {
-            currentFeedBackChunk?.setSlot(slot: "value", value: relativeGainForActr)
-            
-        }
-        
-        print(model.dm.chunks)
-        print("hi")
         chunkNum += 1
         
         // act r decides to accept or reject offer
