@@ -43,6 +43,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var totalHostageNum: UITextView!
     
+    @IBOutlet weak var offerButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -59,11 +61,13 @@ class ViewController: UIViewController {
     
     @IBAction func itemButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        checkOfferButton()
     }
     
     @IBOutlet weak var hostageNumber: UILabel!
     @IBAction func stepper(_ sender: UIStepper) {
         hostageNumber.text = Int(sender.value).description
+        checkOfferButton()
     }
     
     @IBOutlet weak var itemButtonView: UIView!
@@ -95,10 +99,23 @@ class ViewController: UIViewController {
         responseText.text = response
     }
     
+    func checkOfferButton() {
+        if hostageNumber.text == "0" {
+            offerButton.isEnabled = false
+        } else {
+            offerButton.isEnabled = false
+            for case let button as UIButton in itemButtonView.subviews {
+                if button.isSelected {
+                    offerButton.isEnabled = true
+                }
+            }
+        }
+    }
+    
     func updateUIAfterOffer() {
         for case let button as UIButton in itemButtonView.subviews {
             for playerItem in game.playerItems {
-                if button.titleLabel?.text?.lowercased() == playerItem.name {
+                if button.titleLabel!.text!.lowercased().contains(playerItem.name) {
                     if !playerItem.available {
                         button.isEnabled = false
                         button.isSelected = false
@@ -113,6 +130,8 @@ class ViewController: UIViewController {
         
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
+        
+        offerButton.isEnabled = false
         
         if Int(totalHostageNum.text) == 0 {
             performSegue(withIdentifier: "endSegue", sender: self)
