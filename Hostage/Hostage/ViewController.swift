@@ -91,6 +91,22 @@ class ViewController: UIViewController {
         
         if response.deal {
             updateUIAfterOffer()
+        } else {
+            if game.numTurns >= game.gracePeriod {
+                killHostage()
+                feedbackTextField.text.append(" I killed a hostage MUHAHAHAHAHA")
+            } else {
+                feedbackTextField.text.append(" I will kill a hostage in " + String(game.gracePeriod - game.numTurns) + " turns if you don't make a better offer!")
+            }
+        }
+        game.numTurns += 1
+    }
+    
+    func killHostage() {
+        game.noOfHostagesLeft -= 1
+        totalHostageNum.text = String(game.noOfHostagesLeft)
+        if Int(totalHostageNum.text) == 0 {
+            performSegue(withIdentifier: "endSegue", sender: self)
         }
     }
     

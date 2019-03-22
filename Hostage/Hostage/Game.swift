@@ -58,6 +58,8 @@ class Game {
 //    var dm = Declarative()
     var chunkNum = 0
     var currentChunks :[Chunk] = []
+    var numTurns = 0
+    var gracePeriod = 3
 
     
     init(hosNum: Int) {
@@ -159,10 +161,12 @@ class Game {
         if relativeGainForActr < 0.9 {
             // TODO: make counteroffer
             return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+            
         } else {
             makeDeal(offer: offer)
             return Deal(deal: true, response: "That seems fair")
         }
+        
     }
     
     
