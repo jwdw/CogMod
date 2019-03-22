@@ -102,7 +102,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-ox-ngY">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-ox-ngY">
                                 <rect key="frame" x="161" y="762" width="93" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -320,6 +320,7 @@
                         <outlet property="feedbackTextField" destination="heb-Fr-TS6" id="fEQ-rs-O94"/>
                         <outlet property="hostageNumber" destination="A8Z-Nl-nQh" id="xNi-td-VGy"/>
                         <outlet property="itemButtonView" destination="Zo8-ab-cL8" id="sWl-S3-0bk"/>
+                        <outlet property="offerButton" destination="2MF-ox-ngY" id="O8M-Vn-JO2"/>
                         <outlet property="opponentScore" destination="v0L-oz-91O" id="b0D-uM-4sI"/>
                         <outlet property="playerScore" destination="1Ha-j1-chD" id="3p2-yf-vlM"/>
                         <outlet property="responseText" destination="heb-Fr-TS6" id="K9Y-td-5qm"/>
