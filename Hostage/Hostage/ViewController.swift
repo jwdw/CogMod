@@ -96,12 +96,15 @@ class ViewController: UIViewController {
     }
     
     func updateUIAfterOffer() {
+        var totalItemNum: Int = 12
         for case let button as UIButton in itemButtonView.subviews {
             for playerItem in game.playerItems {
                 if button.titleLabel?.text?.lowercased() == playerItem.name {
                     if !playerItem.available {
                         button.isEnabled = false
                         button.isSelected = false
+                        totalItemNum -= 1
+                        print(totalItemNum)
                     }
                 }
             }
@@ -114,7 +117,7 @@ class ViewController: UIViewController {
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
         
-        if Int(totalHostageNum.text) == 0 {
+        if Int(totalHostageNum.text) == 0 || totalItemNum < 1{
             performSegue(withIdentifier: "endSegue", sender: self)
         }
         
