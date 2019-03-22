@@ -133,14 +133,9 @@ class ViewController: UIViewController {
         
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
-        
-<<<<<<< HEAD
-        if Int(totalHostageNum.text) == 0 || totalItemNum < 1{
-=======
         offerButton.isEnabled = false
-        
-        if Int(totalHostageNum.text) == 0 {
->>>>>>> 5dbbdffec0d2b55ae7ff9a00e1209eb1619eab21
+
+        if Int(totalHostageNum.text) == 0 || totalItemNum < 1{
             performSegue(withIdentifier: "endSegue", sender: self)
         }
         
