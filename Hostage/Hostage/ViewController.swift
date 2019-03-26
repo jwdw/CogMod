@@ -162,6 +162,16 @@ class ViewController: UIViewController {
 
 class EndViewController: UIViewController {
     
+    @IBOutlet weak var hostSavNum: UILabel!
+    @IBOutlet weak var hostSavSco: UILabel!
+    @IBOutlet weak var hostLefNum: UILabel!
+    @IBOutlet weak var hostLefSco: UILabel!
+    @IBOutlet weak var hostLosNum: UILabel!
+    @IBOutlet weak var hostLosSco: UILabel!
+    @IBOutlet weak var itemExNum: UILabel!
+    @IBOutlet weak var itemExSco: UILabel!
+    @IBOutlet weak var totalScore: UILabel!
+    
     @IBAction func backMenu(_ sender: UIButton) {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion:nil)
     }
