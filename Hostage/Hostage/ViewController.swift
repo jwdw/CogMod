@@ -9,6 +9,9 @@
 import UIKit
 
 var hostageNum = 7
+var testScore = 0
+var killedHostages = 0
+
 class StartViewController: UIViewController {
     private let aggressOptions = ["Low", "Normal", "High"]
     
@@ -34,6 +37,9 @@ class StartViewController: UIViewController {
 }
 
 class ViewController: UIViewController {
+    var trackSavedHostages = 0
+    var trackKilledHostages = 0
+    
     private let game = Game(hosNum: hostageNum)
     
     @IBOutlet weak var playerScore: UITextView!
@@ -104,6 +110,7 @@ class ViewController: UIViewController {
     
     func killHostage() {
         game.noOfHostagesLeft -= 1
+        trackKilledHostages += 1
         totalHostageNum.text = String(game.noOfHostagesLeft)
         if Int(totalHostageNum.text) == 0 {
             performSegue(withIdentifier: "endSegue", sender: self)
@@ -157,10 +164,47 @@ class ViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "endSegue"){
+            let displayVC = segue.destination as! EndViewController
+            
+            displayVC.hostLef = game.noOfHostagesLeft
+            displayVC.hostLos = trackKilledHostages
+            
+            
+            var itemScoreTracker = 0
+            for i in game.playerItems{
+                if i.available == false {
+                    itemScoreTracker += i.value
+                }
+            }
+            displayVC.itemEx = itemScoreTracker
+        }
+    }
+    
    
 }
 
 class EndViewController: UIViewController {
+    
+    var hostSav: Int!
+    var hostLef: Int!
+    var hostLos: Int!
+    var itemEx: Int!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        hostLefNum.text = String(hostLef)
+        hostLefSco.text = String(hostLef * -10)
+        hostLosNum.text = String(hostLos)
+        hostLosSco.text = String(hostLos * -100)
+        itemExNum.text = String(itemEx)
+        itemExSco.text = String(-itemEx)
+        
+        
+    }
     
     @IBOutlet weak var hostSavNum: UILabel!
     @IBOutlet weak var hostSavSco: UILabel!
@@ -172,9 +216,11 @@ class EndViewController: UIViewController {
     @IBOutlet weak var itemExSco: UILabel!
     @IBOutlet weak var totalScore: UILabel!
     
+    
     @IBAction func backMenu(_ sender: UIButton) {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion:nil)
     }
+    
     
     
 }
