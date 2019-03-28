@@ -113,6 +113,12 @@ class ViewController: UIViewController {
         if Int(totalHostageNum.text) == 0 {
             performSegue(withIdentifier: "endSegue", sender: self)
         }
+        
+        if(Int(hostageNumber.text!)! > game.hostagesLeft) {
+            stepper.maximumValue = Double(game.hostagesLeft)
+            stepper.value -= 1
+            hostageNumber.text = String(game.hostagesLeft)
+        }
     }
     
     @IBOutlet weak var responseText: UITextView!
@@ -198,11 +204,12 @@ class EndViewController: UIViewController {
         hostSavNum.text = String(hostSav)
         hostSavSco.text = String(hostSav * 100)
         hostLefNum.text = String(hostLef)
-        hostLefSco.text = String(hostLef * -10)
+        hostLefSco.text = String(hostLef * -30)
         hostLosNum.text = String(hostLos)
         hostLosSco.text = String(hostLos * -100)
         itemExNum.text = String(itemEx)
         itemExSco.text = String(-itemEx)
+        totalScore.text = String((hostSav * 100) + (hostLef * -30) + (hostLos * -100) + -itemEx)
         
         
     }

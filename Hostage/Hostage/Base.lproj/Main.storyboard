@@ -449,7 +449,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29B-iJ-Nd0">
-                                <rect key="frame" x="241" y="351" width="11" height="22"/>
+                                <rect key="frame" x="207" y="351" width="78" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -479,7 +479,7 @@
                         <outlet property="hostLosNum" destination="Vzx-pY-8MZ" id="3Xc-bc-MQU"/>
                         <outlet property="hostLosSco" destination="sbP-4l-2ea" id="oTd-0b-m9A"/>
                         <outlet property="hostSavNum" destination="Jmu-tE-pbh" id="Mxb-H8-5jJ"/>
-                        <outlet property="hostSavSco" destination="e7o-NM-wzd" id="JiA-Dv-ag7"/>
+                        <outlet property="hostSavSco" destination="5aH-GU-VnY" id="jhC-C1-sbm"/>
                         <outlet property="itemExNum" destination="29B-iJ-Nd0" id="xy8-o9-2Xr"/>
                         <outlet property="itemExSco" destination="PGo-7i-rsQ" id="lMz-0w-x4N"/>
                         <outlet property="totalScore" destination="LBQ-vu-qw0" id="toa-DY-7Ym"/>
