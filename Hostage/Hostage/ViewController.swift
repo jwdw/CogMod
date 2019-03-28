@@ -198,11 +198,12 @@ class EndViewController: UIViewController {
         hostSavNum.text = String(hostSav)
         hostSavSco.text = String(hostSav * 100)
         hostLefNum.text = String(hostLef)
-        hostLefSco.text = String(hostLef * -10)
+        hostLefSco.text = String(hostLef * -30)
         hostLosNum.text = String(hostLos)
         hostLosSco.text = String(hostLos * -100)
         itemExNum.text = String(itemEx)
         itemExSco.text = String(-itemEx)
+        totalScore.text = String((hostSav * 100) + (hostLef * -30) + (hostLos * -100) + -itemEx)
         
         
     }
