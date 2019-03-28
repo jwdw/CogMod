@@ -163,6 +163,7 @@ class ViewController: UIViewController {
         offerButton.isEnabled = false
 
         if Int(totalHostageNum.text) == 0 || totalItemNum < 1{
+            game.teachAI()
             performSegue(withIdentifier: "endSegue", sender: self)
         }
         

@@ -62,6 +62,8 @@ class Game {
     var currentChunks :[Chunk] = []
     var numTurns = 0
     var gracePeriod = 3
+    
+    var endScore = 0
 
     
     init(hosNum: Int) {
@@ -130,29 +132,27 @@ class Game {
         
         // retrieve chunk
         let offerChunk: Chunk = Chunk(s: "", m: Model())
-        offerChunk.setSlot(slot: "value", value: "")
+        offerChunk.setSlot(slot: "value", value: relativeGainForActr)
+        offerChunk.setSlot(slot: "score", value: 9999)
         
         func masmitch(_: Value, _: Value) -> Double? {
             return 0.0
         }
         
-        let chunk = model.dm.partialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
-        print("hi")
-        print(chunk)
-        print("bye")
+        let chunk = model.dm.blendedPartialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
+        
+        
+        
         
         model.time += 2
         
         // create feedback chunk
         var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
-        currentFeedBackChunk?.setSlot(slot: "value", value: Double.random(in: 0.7..<0.9))
-        model.dm.addToDM(currentFeedBackChunk!)
-        currentChunks.append(currentFeedBackChunk!)
+        currentFeedBackChunk?.setSlot(slot: "value", value: relativeGainForActr)
         
         chunkNum += 1
         
         // act r decides to accept or reject offer
-        print(opponentItems)
         if offer.getPlayerValue() != 0 && offer.getOpponentValue() != 0{
             relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
         } else if offer.getOpponentValue() == 0 {
@@ -160,15 +160,37 @@ class Game {
         } else {
             relativeGainForActr = 0
         }
-        if relativeGainForActr < 0.9 {
-            // TODO: make counteroffer
-            return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+        if chunk.1 != nil {
+            switch chunk.1!.slotValue(slot: "decision")! {
+            case .Text("reject"):
+                print("fuck swift")
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
+                currentChunks.append(currentFeedBackChunk!)
+                return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+            case .Text("accept"):
+                makeDeal(offer: offer)
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "accept")
+                currentChunks.append(currentFeedBackChunk!)
+                return Deal(deal: true, response: "That seems fair")
+                
+            default:
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
+                currentChunks.append(currentFeedBackChunk!)
+                return Deal(deal: false, response: "I can't remember anything, but this will never happen anyway")
             
+            }
         } else {
-            makeDeal(offer: offer)
-            return Deal(deal: true, response: "That seems fair")
+            if Float.random(in: 0..<1) > 0.5 {
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
+                currentChunks.append(currentFeedBackChunk!)
+                return Deal(deal: false, response: "I can't remember anything")
+            } else {
+                makeDeal(offer: offer)
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "accept")
+                currentChunks.append(currentFeedBackChunk!)
+                return Deal(deal: true, response: "I can't remember anything" )
+            }
         }
-        
     }
     
     
@@ -234,7 +256,10 @@ class Game {
     }
     
     func teachAI() {
-        // add to dm after game was played
+        for chunk in currentChunks {
+            chunk.setSlot(slot: "score", value: String(endScore))
+            model.dm.addToDM(chunk)
+        }
     }
     
     func gameEnd() {
