@@ -135,8 +135,9 @@ class Game {
         offerChunk.setSlot(slot: "value", value: relativeGainForActr)
         offerChunk.setSlot(slot: "score", value: 9999)
         
-        func masmitch(_: Value, _: Value) -> Double? {
-            return 0.0
+        func masmitch(x: Value, y: Value) -> Double? {
+            let distance = (x - y)*(x - y)
+            return 1.0 / (distance / 2.0 + 1.0) - 1.0 
         }
         
         let chunk = model.dm.blendedPartialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
