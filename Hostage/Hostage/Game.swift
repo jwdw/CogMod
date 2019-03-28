@@ -133,15 +133,27 @@ class Game {
         // retrieve chunk
         let offerChunk: Chunk = Chunk(s: "", m: Model())
         offerChunk.setSlot(slot: "value", value: relativeGainForActr)
-        offerChunk.setSlot(slot: "score", value: 9999)
+        offerChunk.setSlot(slot: "score", value: 0)
         
         func masmitch(x: Value, y: Value) -> Double? {
-            let distance = (x - y)*(x - y)
-            return 1.0 / (distance / 2.0 + 1.0) - 1.0 
+            switch x {
+            case .Number(let xnum):
+                switch y {
+                case .Number(let ynum):
+                    print((xnum - ynum)*(xnum - ynum))
+                    return (xnum - ynum)*(xnum - ynum)
+                default: return nil
+                }
+            default: return nil
+            }
         }
         
         let chunk = model.dm.blendedPartialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
         
+        print("hello this is my retrieved chunk")
+        print(chunk)
+        print("bye")
+
         
         
         
@@ -258,9 +270,11 @@ class Game {
     
     func teachAI() {
         for chunk in currentChunks {
+            print("chunky")
             chunk.setSlot(slot: "score", value: String(endScore))
             model.dm.addToDM(chunk)
         }
+        model.time += 1
     }
     
     func gameEnd() {
