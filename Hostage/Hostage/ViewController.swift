@@ -113,6 +113,12 @@ class ViewController: UIViewController {
         if Int(totalHostageNum.text) == 0 {
             performSegue(withIdentifier: "endSegue", sender: self)
         }
+        
+        if(Int(hostageNumber.text!)! > game.hostagesLeft) {
+            stepper.maximumValue = Double(game.hostagesLeft)
+            stepper.value -= 1
+            hostageNumber.text = String(game.hostagesLeft)
+        }
     }
     
     @IBOutlet weak var responseText: UITextView!
