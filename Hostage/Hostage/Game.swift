@@ -52,8 +52,10 @@ class Offer {
 class Game {
     var playerItems :[Item] = []
     var opponentItems :[Item] = []
-    var noOfHostages: Int
-    var noOfHostagesLeft: Int = 0
+    var totalHostages: Int
+    var hostagesLeft: Int = 0
+    var hostagesSaved: Int = 0
+    var hostagesKilled: Int = 0
     var model = Model()
 //    var dm = Declarative()
     var chunkNum = 0
@@ -64,8 +66,8 @@ class Game {
     
     init(hosNum: Int) {
         
-        noOfHostages = hosNum
-        noOfHostagesLeft = noOfHostages
+        totalHostages = hosNum
+        hostagesLeft = totalHostages
         initItems()
     }
     
@@ -93,7 +95,7 @@ class Game {
         }
         
         // Creation of Hostages, each worth the same
-        for i in 0..<noOfHostages {
+        for i in 0..<totalHostages {
             self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: 37, opponentValue: 37, available: true))
         }
     }
@@ -150,7 +152,7 @@ class Game {
         chunkNum += 1
         
         // act r decides to accept or reject offer
-        
+        print(opponentItems)
         if offer.getPlayerValue() != 0 && offer.getOpponentValue() != 0{
             relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
         } else if offer.getOpponentValue() == 0 {
@@ -184,7 +186,8 @@ class Game {
             for offeredIdx in 0..<offer.opponentOffers.count {
                 if opponentItems[opponentIdx].name == offer.opponentOffers[offeredIdx].name {
                     opponentItems[opponentIdx].available = false
-                    noOfHostagesLeft -= 1
+                    hostagesLeft -= 1
+                    hostagesSaved += 1
                 }
             }
         }

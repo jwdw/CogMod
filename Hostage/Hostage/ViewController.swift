@@ -37,8 +37,6 @@ class StartViewController: UIViewController {
 }
 
 class ViewController: UIViewController {
-    var trackSavedHostages = 0
-    var trackKilledHostages = 0
     
     private let game = Game(hosNum: hostageNum)
     
@@ -54,7 +52,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        stepper.maximumValue = Double(game.noOfHostages)
+        stepper.maximumValue = Double(game.totalHostages)
         totalHostageNum.text = String(game.opponentItems.count)
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
@@ -109,9 +107,9 @@ class ViewController: UIViewController {
     }
     
     func killHostage() {
-        game.noOfHostagesLeft -= 1
-        trackKilledHostages += 1
-        totalHostageNum.text = String(game.noOfHostagesLeft)
+        game.hostagesLeft -= 1
+        game.hostagesKilled += 1
+        totalHostageNum.text = String(game.hostagesLeft)
         if Int(totalHostageNum.text) == 0 {
             performSegue(withIdentifier: "endSegue", sender: self)
         }
@@ -149,8 +147,8 @@ class ViewController: UIViewController {
                 }
             }
         }
-        totalHostageNum.text = String(game.noOfHostagesLeft)
-        stepper.maximumValue = Double(game.noOfHostagesLeft)
+        totalHostageNum.text = String(game.hostagesLeft)
+        stepper.maximumValue = Double(game.hostagesLeft)
         stepper.value = 0.0
         hostageNumber.text = "0"
         
@@ -168,8 +166,9 @@ class ViewController: UIViewController {
         if(segue.identifier == "endSegue"){
             let displayVC = segue.destination as! EndViewController
             
-            displayVC.hostLef = game.noOfHostagesLeft
-            displayVC.hostLos = trackKilledHostages
+            displayVC.hostSav = game.hostagesSaved
+            displayVC.hostLef = game.hostagesLeft
+            displayVC.hostLos = game.hostagesKilled
             
             
             var itemScoreTracker = 0
@@ -196,6 +195,8 @@ class EndViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        hostSavNum.text = String(hostSav)
+        hostSavSco.text = String(hostSav * 100)
         hostLefNum.text = String(hostLef)
         hostLefSco.text = String(hostLef * -10)
         hostLosNum.text = String(hostLos)
