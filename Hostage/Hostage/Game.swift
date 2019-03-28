@@ -130,16 +130,17 @@ class Game {
         
         // retrieve chunk
         let offerChunk: Chunk = Chunk(s: "", m: Model())
-        offerChunk.setSlot(slot: "value", value: "")
+        offerChunk.setSlot(slot: "value", value: relativeGainForActr)
+        offerChunk.setSlot(slot: "score", value: 9999)
         
         func masmitch(_: Value, _: Value) -> Double? {
             return 0.0
         }
         
-        let chunk = model.dm.partialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
-        print("hi")
-        print(chunk)
-        print("bye")
+        let chunk = model.dm.blendedPartialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
+        
+        
+        
         
         model.time += 2
         
@@ -152,7 +153,6 @@ class Game {
         chunkNum += 1
         
         // act r decides to accept or reject offer
-        print(opponentItems)
         if offer.getPlayerValue() != 0 && offer.getOpponentValue() != 0{
             relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
         } else if offer.getOpponentValue() == 0 {
@@ -160,15 +160,27 @@ class Game {
         } else {
             relativeGainForActr = 0
         }
-        if relativeGainForActr < 0.9 {
-            // TODO: make counteroffer
-            return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+        if chunk.1 != nil {
+            switch chunk.1!.slotValue(slot: "decision")! {
+            case .Text("accept"):
+                print("fuck swift")
+                return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+            case .Text("reject"):
+                makeDeal(offer: offer)
+                return Deal(deal: true, response: "That seems fair")
+                
+            default:
+                return Deal(deal: false, response: "I can't remember anything, but this will never happen anyway")
             
+            }
         } else {
-            makeDeal(offer: offer)
-            return Deal(deal: true, response: "That seems fair")
+            if Float.random(in: 0..<1) > 0.5 {
+                return Deal(deal: false, response: "I can't remember anything")
+            } else {
+                makeDeal(offer: offer)
+                return Deal(deal: true, response: "I can't remember anything" )
+            }
         }
-        
     }
     
     
