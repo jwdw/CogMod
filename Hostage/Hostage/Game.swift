@@ -62,6 +62,8 @@ class Game {
     var currentChunks :[Chunk] = []
     var numTurns = 0
     var gracePeriod = 3
+    
+    var endScore = 0
 
     
     init(hosNum: Int) {
@@ -146,9 +148,7 @@ class Game {
         
         // create feedback chunk
         var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
-        currentFeedBackChunk?.setSlot(slot: "value", value: Double.random(in: 0.7..<0.9))
-        model.dm.addToDM(currentFeedBackChunk!)
-        currentChunks.append(currentFeedBackChunk!)
+        currentFeedBackChunk?.setSlot(slot: "value", value: relativeGainForActr)
         
         chunkNum += 1
         
@@ -162,22 +162,32 @@ class Game {
         }
         if chunk.1 != nil {
             switch chunk.1!.slotValue(slot: "decision")! {
-            case .Text("accept"):
-                print("fuck swift")
-                return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
             case .Text("reject"):
+                print("fuck swift")
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
+                currentChunks.append(currentFeedBackChunk!)
+                return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+            case .Text("accept"):
                 makeDeal(offer: offer)
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "accept")
+                currentChunks.append(currentFeedBackChunk!)
                 return Deal(deal: true, response: "That seems fair")
                 
             default:
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
+                currentChunks.append(currentFeedBackChunk!)
                 return Deal(deal: false, response: "I can't remember anything, but this will never happen anyway")
             
             }
         } else {
             if Float.random(in: 0..<1) > 0.5 {
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
+                currentChunks.append(currentFeedBackChunk!)
                 return Deal(deal: false, response: "I can't remember anything")
             } else {
                 makeDeal(offer: offer)
+                currentFeedBackChunk?.setSlot(slot: "decision", value: "accept")
+                currentChunks.append(currentFeedBackChunk!)
                 return Deal(deal: true, response: "I can't remember anything" )
             }
         }
@@ -246,7 +256,10 @@ class Game {
     }
     
     func teachAI() {
-        // add to dm after game was played
+        for chunk in currentChunks {
+            chunk.setSlot(slot: "score", value: String(endScore))
+            model.dm.addToDM(chunk)
+        }
     }
     
     func gameEnd() {
