@@ -175,6 +175,7 @@ class ViewController: UIViewController {
             displayVC.hostSav = game.hostagesSaved
             displayVC.hostLef = game.hostagesLeft
             displayVC.hostLos = game.hostagesKilled
+            displayVC.hosTot = game.totalHostages
             
             
             var itemScoreTracker = 0
@@ -192,6 +193,7 @@ class ViewController: UIViewController {
 
 class EndViewController: UIViewController {
     
+    var hosTot: Int!
     var hostSav: Int!
     var hostLef: Int!
     var hostLos: Int!
@@ -202,14 +204,14 @@ class EndViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         hostSavNum.text = String(hostSav)
-        hostSavSco.text = String(hostSav * 100)
+        hostSavSco.text = String((320 / hosTot) * hostSav)
         hostLefNum.text = String(hostLef)
-        hostLefSco.text = String(hostLef * -30)
+        hostLefSco.text = String(hostLef * -25)
         hostLosNum.text = String(hostLos)
-        hostLosSco.text = String(hostLos * -100)
+        hostLosSco.text = String(hostLos * -80)
         itemExNum.text = String(itemEx)
         itemExSco.text = String(-itemEx)
-        totalScore.text = String((hostSav * 100) + (hostLef * -30) + (hostLos * -100) + -itemEx)
+        totalScore.text = String((320 / hosTot) * hostSav + (hostLef * -25) + (hostLos * -80) + -itemEx)
         
         
     }
