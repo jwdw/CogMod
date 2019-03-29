@@ -16,6 +16,12 @@ struct Item {
     var available: Bool // traded or not
 }
 
+struct Chunky {
+    var score: Int = 0
+    var value: Double = 0
+    var decision: String = ""
+}
+
 struct Deal {
     var deal: Bool
     var response: String
@@ -57,19 +63,21 @@ class Game {
     var hostagesSaved: Int = 0
     var hostagesKilled: Int = 0
     var model = Model()
+    var memory : [Chunky] = []
 //    var dm = Declarative()
     var chunkNum = 0
-    var currentChunks :[Chunk] = []
+    var currentChunks :[Chunky] = []
     var numTurns = 0
     var gracePeriod = 3
     
     var endScore = 0
 
     
-    init(hosNum: Int) {
+    init(hosNum: Int, model_from_view: Model) {
         
         totalHostages = hosNum
         hostagesLeft = totalHostages
+        model = model_from_view
         initItems()
     }
     
@@ -124,44 +132,24 @@ class Game {
     
     func evaluateOffer(offer: Offer) -> Deal{
         var relativeGainForActr: Double
-        print(offer.getPlayerValue())
-        print(offer.getOpponentValue())
         relativeGainForActr = Double(offer.getPlayerValue()) / Double(offer.getOpponentValue())
-        print(relativeGainForActr)
-
         
-        // retrieve chunk
-        let offerChunk: Chunk = Chunk(s: "", m: Model())
-        offerChunk.setSlot(slot: "value", value: relativeGainForActr)
-        offerChunk.setSlot(slot: "score", value: 0)
-        
-        func masmitch(x: Value, y: Value) -> Double? {
-            switch x {
-            case .Number(let xnum):
-                switch y {
-                case .Number(let ynum):
-                    print((xnum - ynum)*(xnum - ynum))
-                    return (xnum - ynum)*(xnum - ynum)
-                default: return nil
-                }
-            default: return nil
+        var min_dist = 99999999999.0
+        var best_decision = ""
+        for chunk in memory {
+            var distance = pow(chunk.value - relativeGainForActr, 2)
+            distance += pow(Double(chunk.score - 9999), 2)
+            if distance < min_dist {
+                min_dist = distance
+                best_decision = chunk.decision
             }
         }
-        
-        let chunk = model.dm.blendedPartialRetrieve(chunk: offerChunk, mismatchFunction: masmitch)
-        
-        print("hello this is my retrieved chunk")
-        print(chunk)
-        print("bye")
-
-        
-        
         
         model.time += 2
         
         // create feedback chunk
-        var currentFeedBackChunk: Chunk? = Chunk(s: "chunk" + String(chunkNum), m: model)
-        currentFeedBackChunk?.setSlot(slot: "value", value: relativeGainForActr)
+        
+        var feedbackChunk: Chunky = Chunky(score: 0, value: relativeGainForActr, decision: "")
         
         chunkNum += 1
         
@@ -173,34 +161,26 @@ class Game {
         } else {
             relativeGainForActr = 0
         }
-        if chunk.1 != nil {
-            switch chunk.1!.slotValue(slot: "decision")! {
-            case .Text("reject"):
-                print("fuck swift")
-                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
-                currentChunks.append(currentFeedBackChunk!)
-                return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
-            case .Text("accept"):
-                makeDeal(offer: offer)
-                currentFeedBackChunk?.setSlot(slot: "decision", value: "accept")
-                currentChunks.append(currentFeedBackChunk!)
-                return Deal(deal: true, response: "That seems fair")
-                
-            default:
-                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
-                currentChunks.append(currentFeedBackChunk!)
-                return Deal(deal: false, response: "I can't remember anything, but this will never happen anyway")
+        switch best_decision {
+        case "reject":
+            feedbackChunk.decision = "reject"
+            currentChunks.append(feedbackChunk)
+            return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+        case "accept":
+            makeDeal(offer: offer)
+            feedbackChunk.decision = "accept"
+            currentChunks.append(feedbackChunk)
+            return Deal(deal: true, response: "That seems fair")
             
-            }
-        } else {
+        default:
             if Float.random(in: 0..<1) > 0.5 {
-                currentFeedBackChunk?.setSlot(slot: "decision", value: "reject")
-                currentChunks.append(currentFeedBackChunk!)
+                feedbackChunk.decision = "reject"
+                currentChunks.append(feedbackChunk)
                 return Deal(deal: false, response: "I can't remember anything")
             } else {
                 makeDeal(offer: offer)
-                currentFeedBackChunk?.setSlot(slot: "decision", value: "accept")
-                currentChunks.append(currentFeedBackChunk!)
+                feedbackChunk.decision = "accept"
+                currentChunks.append(feedbackChunk)
                 return Deal(deal: true, response: "I can't remember anything" )
             }
         }
@@ -271,11 +251,13 @@ class Game {
     func teachAI() {
         
         for chunk in currentChunks {
-            print("chunky")
-            chunk.setSlot(slot: "score", value: String(endScore))
-            model.dm.addToDM(chunk)
+            var chunk_copy = chunk
+            chunk_copy.score = endScore
+            memory.append(chunk_copy)
         }
-        model.time += 1
+        model.time += 10
+    
+        print(memory)
         
         
         let fileName = "Test"
