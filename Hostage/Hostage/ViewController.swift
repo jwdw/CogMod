@@ -11,7 +11,6 @@ import UIKit
 var hostageNum = 7
 var testScore = 0
 var killedHostages = 0
-var model = Model()
 
 class StartViewController: UIViewController {
     private let aggressOptions = ["Low", "Normal", "High"]
@@ -39,7 +38,7 @@ class StartViewController: UIViewController {
 
 class ViewController: UIViewController {
     
-    private let game = Game(hosNum: hostageNum, model_from_view: model)
+    private let game = Game(hosNum: hostageNum)
     
     @IBOutlet weak var playerScore: UITextView!
     @IBOutlet weak var opponentScore: UITextView!
@@ -164,7 +163,6 @@ class ViewController: UIViewController {
 
         if Int(totalHostageNum.text) == 0 || totalItemNum < 1{
             game.teachAI()
-            model = game.model
             performSegue(withIdentifier: "endSegue", sender: self)
         }
         

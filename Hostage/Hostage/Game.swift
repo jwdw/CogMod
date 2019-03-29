@@ -62,7 +62,6 @@ class Game {
     var hostagesLeft: Int = 0
     var hostagesSaved: Int = 0
     var hostagesKilled: Int = 0
-    var model = Model()
     var memory : [Chunky] = []
 //    var dm = Declarative()
     var chunkNum = 0
@@ -73,11 +72,38 @@ class Game {
     var endScore = 0
 
     
-    init(hosNum: Int, model_from_view: Model) {
+    init(hosNum: Int) {
         
         totalHostages = hosNum
         hostagesLeft = totalHostages
-        model = model_from_view
+        
+        // Then reading it back from the file
+        
+        let fileName = "chunkies1"
+        let dir = try? FileManager.default.url(for: .documentDirectory,
+                                               in: .userDomainMask, appropriateFor: nil, create: true)
+        
+        // If the directory was found, we write a file to it and read it back
+        if let fileURL = dir?.appendingPathComponent(fileName).appendingPathExtension("txt") {
+            
+            var inString = ""
+            do {
+                inString = try String(contentsOf: fileURL)
+            } catch {
+                print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
+            }
+            print("Read from the file: \(inString)")
+            
+            let chunkies = inString.components(separatedBy: "\n")
+            for chunky in chunkies.dropLast() {
+                let values = chunky.components(separatedBy: ",")
+                memory.append(Chunky(score: Int(values[0])!, value: Double(values[1])!, decision: values[2]))
+            }
+            print(memory)
+        }
+        
+
+        
         initItems()
     }
     
@@ -144,8 +170,6 @@ class Game {
                 best_decision = chunk.decision
             }
         }
-        
-        model.time += 2
         
         // create feedback chunk
         
@@ -255,12 +279,11 @@ class Game {
             chunk_copy.score = endScore
             memory.append(chunk_copy)
         }
-        model.time += 10
     
         print(memory)
         
         
-        let fileName = "Test"
+        let fileName = "chunkies1"
         let dir = try? FileManager.default.url(for: .documentDirectory,
                                                in: .userDomainMask, appropriateFor: nil, create: true)
         
@@ -268,21 +291,25 @@ class Game {
         if let fileURL = dir?.appendingPathComponent(fileName).appendingPathExtension("txt") {
             
             // Write to the file named Test
-            let outString = "Write this text to the file"
+            var outString = ""
+            for chunk in memory {
+                outString.append(String(chunk.score))
+                outString.append(",")
+                outString.append(String(chunk.value))
+                outString.append(",")
+                outString.append(chunk.decision)
+                outString.append("\n")
+            }
+            print("WRITING")
+            print(outString)
+            
             do {
                 try outString.write(to: fileURL, atomically: true, encoding: .utf8)
             } catch {
                 print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
             }
 
-            // Then reading it back from the file
-            var inString = ""
-            do {
-                inString = try String(contentsOf: fileURL)
-            } catch {
-                print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
-            }
-            print("Read from the file: \(inString)")
+
         }
     
         
