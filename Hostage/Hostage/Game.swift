@@ -20,6 +20,7 @@ struct Chunky {
     var score: Int = 0
     var value: Double = 0
     var decision: String = ""
+    //TODO: activation/forgetting
 }
 
 struct Deal {
@@ -92,7 +93,6 @@ class Game {
             } catch {
                 print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
             }
-            print("Read from the file: \(inString)")
             
             let chunkies = inString.components(separatedBy: "\n")
             for chunky in chunkies.dropLast() {
@@ -168,10 +168,9 @@ class Game {
             if distance < min_dist {
                 min_dist = distance
                 best_decision = chunk.decision
+                //TODO: decide whether chunk is similar enough, so that random actions can be chosen sometimes
             }
         }
-        
-        // create feedback chunk
         
         var feedbackChunk: Chunky = Chunky(score: 0, value: relativeGainForActr, decision: "")
         
@@ -300,24 +299,17 @@ class Game {
                 outString.append(chunk.decision)
                 outString.append("\n")
             }
-            print("WRITING")
-            print(outString)
             
             do {
                 try outString.write(to: fileURL, atomically: true, encoding: .utf8)
             } catch {
                 print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
             }
-
-
         }
-    
-        
     }
     
     func gameEnd() {
-        // add end score to chunk
-        // reset game
+        // TODO: CALCULATE AND ADD END SCORE
     }
     
 }
