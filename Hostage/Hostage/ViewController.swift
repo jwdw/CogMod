@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         totalHostageNum.text = String(game.opponentItems.count)
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
-        feedbackTextField.text = "Gimme " + game.getPrefs().lowercased() + " or heads are gonna roll!"
+        feedbackTextField.text = "I want " + game.getPrefs().lowercased() + " or heads are gonna roll!"
         hostageEmojis.text = String(repeating: "😳", count: game.opponentItems.count)
         
     }
@@ -230,15 +230,32 @@ class EndViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        func scoreColoring (label: UILabel, zero: UIColor) {
+            if Int(label.text!)! > 0 {
+                label.textColor = UIColor.green
+            } else if Int(label.text!)! == 0{
+                label.textColor = zero
+            } else {
+                label.textColor = UIColor.red
+            }
+
+        }
+        
         hostSavNum.text = String(hostSav)
         hostSavSco.text = String((320 / hosTot) * hostSav)
+        scoreColoring(label: hostSavSco, zero: UIColor.red)
         hostLefNum.text = String(hostLef)
         hostLefSco.text = String(hostLef * -25)
+        scoreColoring(label: hostLefSco, zero: UIColor.green)
         hostLosNum.text = String(hostLos)
         hostLosSco.text = String(hostLos * -80)
+        scoreColoring(label: hostLosSco, zero: UIColor.green)
         itemExNum.text = String(numItemsEx)
         itemExSco.text = String(-itemEx)
+        scoreColoring(label: itemExSco, zero: UIColor.green)
         totalScore.text = String((320 / hosTot) * hostSav + (hostLef * -25) + (hostLos * -80) + -itemEx)
+        scoreColoring(label: totalScore, zero: UIColor.yellow)
+        
         emojiEndScore.text = String(repeating: "☠️", count: hostLos) + String(repeating: "😄", count: hostSav) + String(repeating: "☹️", count: hostLef)
         
         
