@@ -40,7 +40,7 @@ class Offer {
     func getPlayerValue() -> Int {
         var value: Int = 0
         for item in self.playerOffers {
-            value += item.value
+            value += item.opponentValue
         }
         return value
     }
@@ -48,7 +48,7 @@ class Offer {
     func getOpponentValue() -> Int {
         var value: Int = 0
         for item in self.opponentOffers {
-            value += item.opponentValue
+            value += item.value
         }
         return value
     }
@@ -188,15 +188,27 @@ class Game {
                 return(Deal(deal: true, response: "this will never happen"))
             }
         } else { // random action
-            if Float.random(in: 0..<1) > 0.5 {
+            if relativeGainForActr < 0.8 {
                 feedbackChunk.decision = "reject"
                 currentChunks.append(feedbackChunk)
                 return Deal(deal: false, response: "I don't think so.")
-            } else {
+            } else if relativeGainForActr > 1.2 {
                 makeDeal(offer: offer)
                 feedbackChunk.decision = "accept"
                 currentChunks.append(feedbackChunk)
                 return Deal(deal: true, response: "Sure, why not?" )
+            } else {
+                if Float.random(in: 0..<1) > 0.5 {
+                    feedbackChunk.decision = "reject"
+                    currentChunks.append(feedbackChunk)
+                    return Deal(deal: false, response: "I don't think so.")
+                } else {
+                    makeDeal(offer: offer)
+                    feedbackChunk.decision = "accept"
+                    currentChunks.append(feedbackChunk)
+                    return Deal(deal: true, response: "Sure, why not?" )
+                    
+                }
             }
         }
     }
@@ -264,6 +276,7 @@ class Game {
     }
     
     func teachAI() {
+        print("Hello from teachAI")
         var itemEx = 0
         for i in playerItems{
             if i.available == false {
@@ -303,6 +316,7 @@ class Game {
             
             do {
                 try outString.write(to: fileURL, atomically: true, encoding: .utf8)
+                sleep(1)
             } catch {
                 print("Failed writing to URL: \(fileURL), Error: " + error.localizedDescription)
             }
