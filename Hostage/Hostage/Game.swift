@@ -76,7 +76,7 @@ class Game {
         hostagesLeft = totalHostages
         
         // Then reading it back from the file
-        
+        print("reading from file")
         let fileName = "chunkies1"
         let dir = try? FileManager.default.url(for: .documentDirectory,
                                                in: .userDomainMask, appropriateFor: nil, create: true)
@@ -96,7 +96,7 @@ class Game {
                 let values = chunky.components(separatedBy: ",")
                 memory.append(Chunky(score: Int(values[0])!, value: Double(values[1])!, decision: values[2]))
             }
-            print(memory)
+            print(memory.count)
         }
         
 
@@ -173,35 +173,30 @@ class Game {
         
         chunkNum += 1
         
-        // act r decides to accept or reject offer
-        if offer.getPlayerValue() != 0 && offer.getOpponentValue() != 0{
-            relativeGainForActr = Double(offer.getPlayerValue() / offer.getOpponentValue())
-        } else if offer.getOpponentValue() == 0 {
-            relativeGainForActr = 999999
-        } else {
-            relativeGainForActr = 0
-        }
-        switch best_decision {
-        case "reject":
-            feedbackChunk.decision = "reject"
-            currentChunks.append(feedbackChunk)
-            return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
-        case "accept":
-            makeDeal(offer: offer)
-            feedbackChunk.decision = "accept"
-            currentChunks.append(feedbackChunk)
-            return Deal(deal: true, response: "That seems fair")
-            
-        default:
+        if Float.random(in: 0..<1) > (1 / Float(memory.count)) { // as the memory grows bigger, chance of random action decreases
+            switch best_decision {
+            case "reject":
+                feedbackChunk.decision = "reject"
+                currentChunks.append(feedbackChunk)
+                return Deal(deal: false, response: "No way am I gonna accept this lame offer, dummies!")
+            case "accept":
+                makeDeal(offer: offer)
+                feedbackChunk.decision = "accept"
+                currentChunks.append(feedbackChunk)
+                return Deal(deal: true, response: "That seems fair")
+            default:
+                return(Deal(deal: true, response: "this will never happen"))
+            }
+        } else { // random action
             if Float.random(in: 0..<1) > 0.5 {
                 feedbackChunk.decision = "reject"
                 currentChunks.append(feedbackChunk)
-                return Deal(deal: false, response: "I can't remember anything")
+                return Deal(deal: false, response: "I don't think so.")
             } else {
                 makeDeal(offer: offer)
                 feedbackChunk.decision = "accept"
                 currentChunks.append(feedbackChunk)
-                return Deal(deal: true, response: "I can't remember anything" )
+                return Deal(deal: true, response: "Sure, why not?" )
             }
         }
     }
@@ -275,17 +270,19 @@ class Game {
                 itemEx += i.value
             }
         }
-        let playerScore = (320 / hostageNum) * hostagesSaved + (hostagesLeft * -25) + (hostagesKilled * -80) + -itemEx
+        let opponentScore = (320 / hostageNum) * -hostagesSaved + (hostagesLeft * 25) + (hostagesKilled * -80) + itemEx
+        
+        print(opponentScore)
         
         for chunk in currentChunks {
             var chunk_copy = chunk
-            chunk_copy.score = -playerScore
+            chunk_copy.score = opponentScore
             memory.append(chunk_copy)
         }
     
         print(memory)
         
-        
+        print("writing to file")
         let fileName = "chunkies1"
         let dir = try? FileManager.default.url(for: .documentDirectory,
                                                in: .userDomainMask, appropriateFor: nil, create: true)
