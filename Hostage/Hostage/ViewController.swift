@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         totalHostageNum.text = String(game.opponentItems.count)
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
-        feedbackTextField.text = "Gimme a " + game.getPrefs().lowercased() + " or heads are gonna roll!"
+        feedbackTextField.text = "Gimme " + game.getPrefs().lowercased() + " or heads are gonna roll!"
         hostageEmojis.text = String(repeating: "😳", count: game.opponentItems.count)
         
     }
@@ -99,6 +99,7 @@ class ViewController: UIViewController {
         let offer = Offer(playerOffers: game.selectedPlayerItems(itemsStringList: playerItemsOffered),
                           opponentOffers: game.selectedOpponentItems(itemsInt: hostHostagesOffered))
         
+        print(offer.playerOffers)
         
         let response = game.evaluateOffer(offer: offer)
         
@@ -109,9 +110,9 @@ class ViewController: UIViewController {
         } else {
             if game.numTurns >= game.gracePeriod {
                 killHostage()
-                feedbackTextField.text.append(" I killed a hostage MUHAHAHAHAHA")
+                feedbackTextField.text.append(" I killed a hostage MUHAHAHAHAHA! \(game.prefAfterOffer(currOffer: offer))")
             } else {
-                feedbackTextField.text.append(" I will kill a hostage in " + String(game.gracePeriod - game.numTurns) + " turns if you don't make a better offer!")
+                feedbackTextField.text.append(" I will kill a hostage in " + String(game.gracePeriod - game.numTurns) + " turns if you don't make a better offer! \(game.prefAfterOffer(currOffer: offer))")
             }
         }
         game.numTurns += 1

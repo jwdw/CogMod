@@ -11,6 +11,7 @@ import Foundation
 struct Item {
     var name: String
     var displayName: String
+    var phrase: String
     var value: Int
     var opponentValue: Int
     var available: Bool // traded or not
@@ -119,17 +120,30 @@ class Game {
                                           "Retract Snipers",
                                           "Fair Trial"]
         
+        let phrasesItems: [String] = ["a Bicycle",
+                                      "a Getaway Car",
+                                      "a freakin' Helicopter",
+                                      "some Food",
+                                      "a pile of Amphetamins",
+                                      "some Weaponry",
+                                      "half a Bitcoin",
+                                      "Granny's Watch",
+                                      "some Apple Stock",
+                                      "my Public Statement",
+                                      "you to retract the Snipers",
+                                      "a Fair Trial"]
+        
         let itemValues: [Int] = [10, 20, 50]
         let opponentItemValues: [Int] = itemValues.shuffled() + itemValues.shuffled() + itemValues.shuffled() + itemValues.shuffled()
 
         // Creation of playerItems
         for i in 0..<namesPlayerItems.count {
-            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], value: itemValues[i%3], opponentValue: opponentItemValues[i], available: true))
+            self.playerItems.append(Item(name: namesPlayerItems[i].lowercased(), displayName: namesPlayerItems[i], phrase: phrasesItems[i], value: itemValues[i%3], opponentValue: opponentItemValues[i], available: true))
         }
         
         // Creation of Hostages, each worth the same
         for i in 0..<totalHostages {
-            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", value: 37, opponentValue: 37, available: true))
+            self.opponentItems.append(Item(name: "hostage\(i)", displayName: "Hostage \(i)", phrase: "Hostage \(i)", value: 37, opponentValue: 37, available: true))
         }
     }
     
@@ -183,9 +197,9 @@ class Game {
                 makeDeal(offer: offer)
                 feedbackChunk.decision = "accept"
                 currentChunks.append(feedbackChunk)
-                return Deal(deal: true, response: "That seems fair")
+                return Deal(deal: true, response: "That seems fair. I'm now interested in \(getPrefs().lowercased())!")
             default:
-                return(Deal(deal: true, response: "this will never happen"))
+                return(Deal(deal: true, response: "this will never happen!"))
             }
         } else { // random action
             if relativeGainForActr < 0.8 {
@@ -196,7 +210,7 @@ class Game {
                 makeDeal(offer: offer)
                 feedbackChunk.decision = "accept"
                 currentChunks.append(feedbackChunk)
-                return Deal(deal: true, response: "Sure, why not?" )
+                return Deal(deal: true, response: "Sure, why not? Now, I want \(getPrefs().lowercased())!" )
             } else {
                 if Float.random(in: 0..<1) > 0.5 {
                     feedbackChunk.decision = "reject"
@@ -206,7 +220,7 @@ class Game {
                     makeDeal(offer: offer)
                     feedbackChunk.decision = "accept"
                     currentChunks.append(feedbackChunk)
-                    return Deal(deal: true, response: "Sure, why not?" )
+                    return Deal(deal: true, response: "Sure, why not? Now, I'm interested in \(getPrefs().lowercased())!" )
                     
                 }
             }
@@ -268,11 +282,35 @@ class Game {
     func getPrefs() -> String {
         var prefs: [String] = []
         for item in playerItems {
-            if item.opponentValue == 50 {
-                prefs.append(item.displayName)
+            if item.opponentValue == 50 && item.available == true {
+                prefs.append(item.phrase)
             }
         }
+        if prefs.count == 0 {
+            for item in playerItems {
+                if item.opponentValue == 20 && item.available == true {
+                    prefs.append(item.phrase)
+                }
+            }
+        }
+        
+        if prefs.count == 0 {
+            return "nothing really anymore..."
+        }
+        
         return prefs.shuffled()[0]
+    }
+    
+    func prefAfterOffer(currOffer: Offer) -> String {
+        let feedbackItem = currOffer.playerOffers.shuffled()[0]
+        print(feedbackItem)
+        if feedbackItem.opponentValue == 10 {
+            return "I seriously couldn't care less about \(feedbackItem.phrase)!"
+        } else if feedbackItem.opponentValue == 20 {
+            return "Well, \(feedbackItem.phrase) sounds kinda interesting though."
+        } else {
+            return "But \(feedbackItem.phrase) sounds really good!"
+        }
     }
     
     func teachAI() {
