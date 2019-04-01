@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playerScore: UITextView!
     @IBOutlet weak var opponentScore: UITextView!
-
+    @IBOutlet weak var hostageEmojis: UILabel!
     @IBOutlet weak var feedbackTextField: UITextView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var totalHostageNum: UITextView!
@@ -66,6 +66,8 @@ class ViewController: UIViewController {
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
         feedbackTextField.text = "Gimme a " + game.getPrefs().lowercased() + " or heads are gonna roll!"
+        hostageEmojis.text = String(repeating: "😳", count: game.opponentItems.count)
+        
     }
     
     
@@ -119,6 +121,9 @@ class ViewController: UIViewController {
         game.hostagesLeft -= 1
         game.hostagesKilled += 1
         totalHostageNum.text = String(game.hostagesLeft)
+        
+        hostageEmojis.text = String(repeating: "☠️", count: game.hostagesKilled) + String(repeating: "😄", count: game.hostagesSaved) + String(repeating: "😳", count: game.hostagesLeft)
+        
         if Int(totalHostageNum.text) == 0 {
             performSegue(withIdentifier: "endSegue", sender: self)
         }
@@ -169,6 +174,9 @@ class ViewController: UIViewController {
         playerScore.text = String(game.getPlayerScore())
         opponentScore.text = String(game.getOpponentScore())
         offerButton.isEnabled = false
+        
+        hostageEmojis.text = String(repeating: "☠️", count: game.hostagesKilled) + String(repeating: "😄", count: game.hostagesSaved) + String(repeating: "😳", count: game.hostagesLeft)
+        
 
         if Int(totalHostageNum.text) == 0 || totalItemNum < 1{
             print("hello I'm gonna do teachAI")
@@ -230,6 +238,7 @@ class EndViewController: UIViewController {
         itemExNum.text = String(numItemsEx)
         itemExSco.text = String(-itemEx)
         totalScore.text = String((320 / hosTot) * hostSav + (hostLef * -25) + (hostLos * -80) + -itemEx)
+        emojiEndScore.text = String(repeating: "☠️", count: hostLos) + String(repeating: "😄", count: hostSav) + String(repeating: "☹️", count: hostLef)
         
         
     }
@@ -243,6 +252,7 @@ class EndViewController: UIViewController {
     @IBOutlet weak var itemExNum: UILabel!
     @IBOutlet weak var itemExSco: UILabel!
     @IBOutlet weak var totalScore: UILabel!
+    @IBOutlet weak var emojiEndScore: UILabel!
     
     
     @IBAction func backMenu(_ sender: UIButton) {

@@ -77,7 +77,7 @@ class Game {
         
         // Then reading it back from the file
         print("reading from file")
-        let fileName = "chunkies1"
+        let fileName = "chunkies2"
         let dir = try? FileManager.default.url(for: .documentDirectory,
                                                in: .userDomainMask, appropriateFor: nil, create: true)
         
@@ -296,7 +296,7 @@ class Game {
         print(memory)
         
         print("writing to file")
-        let fileName = "chunkies1"
+        let fileName = "chunkies2"
         let dir = try? FileManager.default.url(for: .documentDirectory,
                                                in: .userDomainMask, appropriateFor: nil, create: true)
         
