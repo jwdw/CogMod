@@ -13,6 +13,11 @@ var testScore = 0
 var killedHostages = 0
 
 class StartViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     private let aggressOptions = ["Low", "Normal", "High"]
     
     @IBOutlet weak var hostageNumSlider: UISlider!
@@ -37,6 +42,10 @@ class StartViewController: UIViewController {
 }
 
 class ViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     private let game = Game(hosNum: hostageNum)
     
@@ -196,6 +205,10 @@ class ViewController: UIViewController {
 }
 
 class EndViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     var hosTot: Int!
     var hostSav: Int!

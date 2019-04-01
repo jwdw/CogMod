@@ -22,6 +22,8 @@
 		396804AE2231462500DB8273 /* SlotCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AB2231462500DB8273 /* SlotCondition.swift */; };
 		396804AF2231462500DB8273 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AC2231462500DB8273 /* Tokenizer.swift */; };
 		396804B02231462500DB8273 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AD2231462500DB8273 /* SlotAction.swift */; };
+		39C2BA1222522B5D0016EEF2 /* CFMyBloodyValentine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39C2BA1122522B5D0016EEF2 /* CFMyBloodyValentine-Regular.ttf */; };
+		39C2BA1822522E500016EEF2 /* CFMyBloodyValentine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39C2BA1A22522E500016EEF2 /* CFMyBloodyValentine-Regular.ttf */; };
 		9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116AEA4222E92F300F2A6C9 /* Game.swift */; };
 		912D77702229285A00E43851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D776F2229285A00E43851 /* AppDelegate.swift */; };
 		912D77722229285A00E43851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D77712229285A00E43851 /* ViewController.swift */; };
@@ -65,6 +67,8 @@
 		396804AB2231462500DB8273 /* SlotCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotCondition.swift; sourceTree = "<group>"; };
 		396804AC2231462500DB8273 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		396804AD2231462500DB8273 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
+		39C2BA1122522B5D0016EEF2 /* CFMyBloodyValentine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CFMyBloodyValentine-Regular.ttf"; path = "../../../../Downloads/CFMyBloodyValentine-Regular.ttf"; sourceTree = "<group>"; };
+		39C2BA1922522E500016EEF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = "Base.lproj/CFMyBloodyValentine-Regular.ttf"; sourceTree = "<group>"; };
 		9116AEA4222E92F300F2A6C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		912D776C2229285A00E43851 /* Hostage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D776F2229285A00E43851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39C2BA1322522B930016EEF2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				39C2BA1A22522E500016EEF2 /* CFMyBloodyValentine-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		912D77632229285A00E43851 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +125,7 @@
 				912D77832229285B00E43851 /* HostageTests */,
 				912D778E2229285B00E43851 /* HostageUITests */,
 				912D776D2229285A00E43851 /* Products */,
+				39C2BA1322522B930016EEF2 /* Fonts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +147,7 @@
 				396804932231367C00DB8273 /* Model.swift */,
 				912D77732229285A00E43851 /* Main.storyboard */,
 				912D77762229285A00E43851 /* Assets.xcassets */,
+				39C2BA1122522B5D0016EEF2 /* CFMyBloodyValentine-Regular.ttf */,
 				912D77782229285A00E43851 /* LaunchScreen.storyboard */,
 				912D777B2229285A00E43851 /* Info.plist */,
 				396804952231369300DB8273 /* Declarative.swift */,
@@ -277,6 +291,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C2BA1822522E500016EEF2 /* CFMyBloodyValentine-Regular.ttf in Resources */,
+				39C2BA1222522B5D0016EEF2 /* CFMyBloodyValentine-Regular.ttf in Resources */,
 				912D777A2229285A00E43851 /* LaunchScreen.storyboard in Resources */,
 				912D77772229285A00E43851 /* Assets.xcassets in Resources */,
 				912D77752229285A00E43851 /* Main.storyboard in Resources */,
@@ -357,6 +373,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		39C2BA1A22522E500016EEF2 /* CFMyBloodyValentine-Regular.ttf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39C2BA1922522E500016EEF2 /* Base */,
+			);
+			name = "CFMyBloodyValentine-Regular.ttf";
+			sourceTree = "<group>";
+		};
 		912D77732229285A00E43851 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
