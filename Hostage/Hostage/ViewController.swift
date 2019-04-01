@@ -179,12 +179,15 @@ class ViewController: UIViewController {
             
             
             var itemScoreTracker = 0
+            var numItems = 0
             for i in game.playerItems{
                 if i.available == false {
                     itemScoreTracker += i.value
+                    numItems += 1
                 }
             }
             displayVC.itemEx = itemScoreTracker
+            displayVC.numItemsEx = numItems
         }
     }
     
@@ -198,6 +201,7 @@ class EndViewController: UIViewController {
     var hostLef: Int!
     var hostLos: Int!
     var itemEx: Int!
+    var numItemsEx: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,7 +213,7 @@ class EndViewController: UIViewController {
         hostLefSco.text = String(hostLef * -25)
         hostLosNum.text = String(hostLos)
         hostLosSco.text = String(hostLos * -80)
-        itemExNum.text = String(itemEx)
+        itemExNum.text = String(numItemsEx)
         itemExSco.text = String(-itemEx)
         totalScore.text = String((320 / hosTot) * hostSav + (hostLef * -25) + (hostLos * -80) + -itemEx)
         

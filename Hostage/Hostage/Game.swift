@@ -70,9 +70,6 @@ class Game {
     var numTurns = 0
     var gracePeriod = 3
     
-    var endScore = 0
-
-    
     init(hosNum: Int) {
         
         totalHostages = hosNum
@@ -272,10 +269,17 @@ class Game {
     }
     
     func teachAI() {
+        var itemEx = 0
+        for i in playerItems{
+            if i.available == false {
+                itemEx += i.value
+            }
+        }
+        let playerScore = (320 / hostageNum) * hostagesSaved + (hostagesLeft * -25) + (hostagesKilled * -80) + -itemEx
         
         for chunk in currentChunks {
             var chunk_copy = chunk
-            chunk_copy.score = endScore
+            chunk_copy.score = -playerScore
             memory.append(chunk_copy)
         }
     
