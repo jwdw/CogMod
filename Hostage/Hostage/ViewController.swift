@@ -53,6 +53,8 @@ class StartViewController: UIViewController {
         }
     }
     
+    
+    @IBOutlet weak var instructionButton: UIButton!
     @IBOutlet weak var hostageNumSlider: UISlider!
     @IBOutlet weak var hostageNumSliderLabel: UILabel!
     @IBAction func hostageNumFunc(_ sender: UISlider) {
@@ -70,6 +72,11 @@ class StartViewController: UIViewController {
     @IBAction func startGameFunc(_ sender: Any) {
         performSegue(withIdentifier: "startSegue", sender: self)
     }
+    
+    @IBAction func infoScreenFunc(_ sender: Any) {
+        performSegue(withIdentifier: "infoSegue", sender: self)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "startSegue"){
@@ -356,5 +363,23 @@ class EndViewController: UIViewController {
     }
     
     
+    
+}
+
+class InfoViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        }
+    
+    @IBOutlet weak var backMenuButton: UIButton!
+    @IBAction func backMenu(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true, completion:nil)
+    }
     
 }
