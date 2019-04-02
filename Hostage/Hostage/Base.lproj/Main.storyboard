@@ -146,24 +146,16 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instruction File" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fun-Nt-Trj">
                                 <rect key="frame" x="20" y="74" width="374" height="91"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="37"/>
                                 <color key="textColor" name="Bloody"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
-                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-fU-hoh">
-                                <rect key="frame" x="52" y="179" width="310" height="563"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Welcome to the situation room, Officer! I regret having to inform you about a hostage situation that has intensified over the past minutes. The "host" has about 5 to 9 hostages under his control. We believe him to be heavily armed and  highly aggressive. However, we have been able to establish a secure and stable line of communication to the host. We need your intelligence and expertise, Sir, to identify the demands of the host and negotiate over the release of all hostages. But don't just give everything away we have! Take your time to find items that the host values more than us. We don't want to incentivize future hosts to just run us over with their demands. However, time is of the essence. Act fast, or an agitated host will start to kill off innocent people, one by one. Good luck!</mutableString>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSx-zh-Vbs">
                                 <rect key="frame" x="99" y="739" width="216" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Back to Menu">
                                     <color key="titleColor" name="Bloody"/>
@@ -172,12 +164,32 @@
                                     <action selector="backMenu:" destination="bak-ca-prl" eventType="touchUpInside" id="dBI-x8-N04"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-fU-hoh">
+                                <rect key="frame" x="52" y="181" width="310" height="563"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <mutableString key="text">Welcome to the situation room, Officer! I regret having to inform you about a hostage situation that has intensified over the past minutes. The "host" has about 5 to 9 hostages under his control. We believe him to be heavily armed and  highly aggressive. However, we have been able to establish a secure and stable line of communication to the host. We need your intelligence and expertise, Sir, to identify the demands of the host and negotiate over the release of all hostages. But don't just give everything away we have! Take your time to find items that the host values more than us. We don't want to incentivize future hosts to just run us over with their demands. However, time is of the essence. Act fast, or an agitated host will start to kill off innocent people, one by one. Good luck!</mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIj-Gp-Qh5">
+                                <rect key="frame" x="129" y="685" width="157" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
+                                <state key="normal" title="Shut Up! 🔈">
+                                    <color key="titleColor" name="Bloody"/>
+                                </state>
+                                <connections>
+                                    <action selector="shutUp:" destination="bak-ca-prl" eventType="touchUpInside" id="rod-Cf-GeQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="RVO-SA-XUT"/>
                     </view>
                     <connections>
                         <outlet property="backMenuButton" destination="HSx-zh-Vbs" id="pe1-JL-7Xw"/>
+                        <outlet property="shutUpButton" destination="cIj-Gp-Qh5" id="sr4-zX-6Xf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2N-kR-k1p" userLabel="First Responder" sceneMemberID="firstResponder"/>

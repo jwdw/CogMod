@@ -395,6 +395,12 @@ class InfoViewController: UIViewController {
     }
     
     
+    @IBOutlet weak var shutUpButton: UIButton!
+    @IBAction func shutUp(_ sender: Any) {
+        anotherAudioPlayer.stop()
+        shutUpButton.setTitle("Shut Up! 🔇", for: .normal)
+    }
+    
     @IBOutlet weak var backMenuButton: UIButton!
     @IBAction func backMenu(_ sender: Any) {
         anotherAudioPlayer.stop()
