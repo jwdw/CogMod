@@ -375,10 +375,29 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        playSound(file: "instructions", ext: ".wav", loops: 0)
+        
         }
+    
+    var anotherAudioPlayer = AVAudioPlayer()
+    
+    func playSound(file:String, ext:String, loops:Int) -> Void {
+        do {
+            let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: file, ofType: ext)!)
+            anotherAudioPlayer = try AVAudioPlayer(contentsOf: url)
+            anotherAudioPlayer.numberOfLoops = loops
+            anotherAudioPlayer.prepareToPlay()
+            anotherAudioPlayer.play()
+        } catch let error {
+            NSLog(error.localizedDescription)
+        }
+    }
+    
     
     @IBOutlet weak var backMenuButton: UIButton!
     @IBAction func backMenu(_ sender: Any) {
+        anotherAudioPlayer.stop()
         self.presentingViewController?.dismiss(animated: true, completion:nil)
     }
     

@@ -34,6 +34,7 @@
 		39A426BC22536B7100B1E9E0 /* die4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426BE22536B7100B1E9E0 /* die4.wav */; };
 		39A426BF22536B7400B1E9E0 /* die5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426C122536B7400B1E9E0 /* die5.wav */; };
 		39A426C222536B7700B1E9E0 /* die6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426C422536B7700B1E9E0 /* die6.wav */; };
+		39A426C72253825B00B1E9E0 /* instructions.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426C92253825B00B1E9E0 /* instructions.wav */; };
 		9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116AEA4222E92F300F2A6C9 /* Game.swift */; };
 		912D77702229285A00E43851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D776F2229285A00E43851 /* AppDelegate.swift */; };
 		912D77722229285A00E43851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D77712229285A00E43851 /* ViewController.swift */; };
@@ -89,6 +90,7 @@
 		39A426BD22536B7100B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die4.wav; sourceTree = "<group>"; };
 		39A426C022536B7400B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die5.wav; sourceTree = "<group>"; };
 		39A426C322536B7700B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die6.wav; sourceTree = "<group>"; };
+		39A426C82253825B00B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/instructions.wav; sourceTree = "<group>"; };
 		9116AEA4222E92F300F2A6C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		912D776C2229285A00E43851 /* Hostage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D776F2229285A00E43851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				39A426BE22536B7100B1E9E0 /* die4.wav */,
 				39A426C122536B7400B1E9E0 /* die5.wav */,
 				39A426C422536B7700B1E9E0 /* die6.wav */,
+				39A426C92253825B00B1E9E0 /* instructions.wav */,
 			);
 			name = Sounds;
 			path = Fonts/Fonts/Sounds;
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A426B322536B6700B1E9E0 /* die1.wav in Resources */,
+				39A426C72253825B00B1E9E0 /* instructions.wav in Resources */,
 				39A426B622536B6B00B1E9E0 /* die2.wav in Resources */,
 				39A4269822536B4300B1E9E0 /* free1.wav in Resources */,
 				39A426A422536B5300B1E9E0 /* free5.wav in Resources */,
@@ -516,6 +520,14 @@
 				39A426C322536B7700B1E9E0 /* Base */,
 			);
 			name = die6.wav;
+			sourceTree = "<group>";
+		};
+		39A426C92253825B00B1E9E0 /* instructions.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426C82253825B00B1E9E0 /* Base */,
+			);
+			name = instructions.wav;
 			sourceTree = "<group>";
 		};
 		912D77732229285A00E43851 /* Main.storyboard */ = {

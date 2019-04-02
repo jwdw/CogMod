@@ -93,15 +93,8 @@
                                     <action selector="audioSwitch:" destination="Fnu-Ch-H6n" eventType="touchUpInside" id="mkz-c6-tsB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6k-lj-sFs">
-                                <rect key="frame" x="278" y="769" width="66" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="22"/>
-                                <color key="textColor" name="Bloody"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeT-wm-vNh">
-                                <rect key="frame" x="59" y="769" width="129" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeT-wm-vNh">
+                                <rect key="frame" x="45" y="755" width="158" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="22"/>
                                 <color key="textColor" name="Bloody"/>
@@ -116,6 +109,13 @@
                                     <action selector="infoScreenFunc:" destination="Fnu-Ch-H6n" eventType="touchUpInside" id="kHp-hW-sLe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6k-lj-sFs">
+                                <rect key="frame" x="243" y="757" width="134" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="22"/>
+                                <color key="textColor" name="Bloody"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="10t-LC-0D8"/>
@@ -153,8 +153,16 @@
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="-1"/>
                             </label>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-fU-hoh">
+                                <rect key="frame" x="52" y="179" width="310" height="563"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <mutableString key="text">Welcome to the situation room, Officer! I regret having to inform you about a hostage situation that has intensified over the past minutes. The "host" has about 5 to 9 hostages under his control. We believe him to be heavily armed and  highly aggressive. However, we have been able to establish a secure and stable line of communication to the host. We need your intelligence and expertise, Sir, to identify the demands of the host and negotiate over the release of all hostages. But don't just give everything away we have! Take your time to find items that the host values more than us. We don't want to incentivize future hosts to just run us over with their demands. However, time is of the essence. Act fast, or an agitated host will start to kill off innocent people, one by one. Good luck!</mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSx-zh-Vbs">
-                                <rect key="frame" x="106" y="732" width="216" height="85"/>
+                                <rect key="frame" x="99" y="739" width="216" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Back to Menu">
@@ -164,14 +172,6 @@
                                     <action selector="backMenu:" destination="bak-ca-prl" eventType="touchUpInside" id="dBI-x8-N04"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-fU-hoh">
-                                <rect key="frame" x="52" y="179" width="310" height="563"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Welcome to the situation room, Officer! I regret having to inform you about a hostage situation that has intensified over the past minutes. The "host" has about 5 to 9 hostages under his control. We believe him to be heavily armed and  highly aggressive. However, we have been able to establish a secure and stable line of communication to the host. We need your intelligence and expertise, Sir, to identify the demands of the host and negotiate over the release of all hostages. But don't just give everything away we have! Take your time to find items that the host values more than us. We don't want to incentivize future hosts to just run us over with their demands. However, time is of the essence. Act fast, or an agitated host will start to kill off innocent people, one by one. Good luck!</mutableString>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="RVO-SA-XUT"/>
