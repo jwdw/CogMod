@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbA-hh-tQW">
-                                <rect key="frame" x="70" y="580" width="274" height="36"/>
+                                <rect key="frame" x="70" y="585" width="274" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Start Game">
@@ -84,6 +84,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lg7-iR-rOd">
+                                <rect key="frame" x="292" y="689" width="52" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="🔈"/>
+                                <connections>
+                                    <action selector="audioSwitch:" destination="Fnu-Ch-H6n" eventType="touchUpInside" id="mkz-c6-tsB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="10t-LC-0D8"/>
@@ -91,6 +100,7 @@
                     <connections>
                         <outlet property="aggressNumSlider" destination="yuF-zT-aBf" id="3FW-jK-1fN"/>
                         <outlet property="aggressNumSliderLabel" destination="hLM-sv-Kdj" id="o0a-tR-cFr"/>
+                        <outlet property="audioOnOff" destination="lg7-iR-rOd" id="ZIL-PB-U7W"/>
                         <outlet property="hostageNumSlider" destination="Rd1-66-RxC" id="s58-Po-FYj"/>
                         <outlet property="hostageNumSliderLabel" destination="r1g-PO-dZZ" id="5mj-2T-If3"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="startSegue" id="DjQ-cM-7zD"/>

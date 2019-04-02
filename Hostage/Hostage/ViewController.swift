@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 var hostageNum = 7
 var testScore = 0
@@ -18,7 +19,39 @@ class StartViewController: UIViewController {
         return .lightContent
     }
     
+    var audioPlayer = AVAudioPlayer()
+    
+    func playSound(file:String, ext:String, loops:Int) -> Void {
+        do {
+            let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: file, ofType: ext)!)
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer.numberOfLoops = loops
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        } catch let error {
+            NSLog(error.localizedDescription)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        playSound(file: "hostage_soundtrack", ext: ".wav", loops: -1)
+    }
+    
     private let aggressOptions = ["Low", "Normal", "High"]
+    
+    @IBOutlet weak var audioOnOff: UIButton!
+    var audioTrack = true
+    @IBAction func audioSwitch(_ sender: Any) {
+        audioTrack = !audioTrack
+        if audioTrack == true {
+            audioOnOff.setTitle("🔈", for: .normal)
+            playSound(file: "hostage_soundtrack", ext: ".wav", loops: -1)
+        } else {
+            audioOnOff.setTitle("🔇", for: .normal)
+            audioPlayer.stop()
+        }
+    }
     
     @IBOutlet weak var hostageNumSlider: UISlider!
     @IBOutlet weak var hostageNumSliderLabel: UILabel!
@@ -38,6 +71,13 @@ class StartViewController: UIViewController {
         performSegue(withIdentifier: "startSegue", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "startSegue"){
+            let displayVC = segue.destination as! ViewController
+            
+            displayVC.audioIdent = audioTrack
+        }
+    }
     
 }
 
@@ -48,6 +88,8 @@ class ViewController: UIViewController {
     }
     
     private let game = Game(hosNum: hostageNum)
+    
+    var audioIdent: Bool!
     
     @IBOutlet weak var playerScore: UITextView!
     @IBOutlet weak var opponentScore: UITextView!
@@ -70,6 +112,39 @@ class ViewController: UIViewController {
         
     }
     
+    var audioPlayer2 = AVAudioPlayer()
+    func playSound(file:String, ext:String, loops:Int) -> Void {
+        do {
+            let url = URL.init(fileURLWithPath: Bundle.main.path(forResource: file, ofType: ext)!)
+            audioPlayer2 = try AVAudioPlayer(contentsOf: url)
+            audioPlayer2.numberOfLoops = loops
+            audioPlayer2.prepareToPlay()
+            audioPlayer2.play()
+        } catch let error {
+            NSLog(error.localizedDescription)
+        }
+    }
+    
+    let freeSounds:[String] = ["free1",
+                                 "free2",
+                                 "free3",
+                                 "free4",
+                                 "free5"]
+    
+    let dieSounds:[String] = ["die1",
+                              "die2",
+                              "die3",
+                              "die4",
+                              "die5",
+                              "die6"]
+    
+    func soundEffect(death: Bool) {
+        if death == true {
+            playSound(file: dieSounds.shuffled()[0], ext: ".wav", loops: 0)
+        } else {
+            playSound(file: freeSounds.shuffled()[0], ext: ".wav", loops: 0)
+        }
+    }
     
     
     var offers: [String] = []
@@ -120,6 +195,7 @@ class ViewController: UIViewController {
     }
     
     func killHostage() {
+        soundEffect(death: true)
         game.hostagesLeft -= 1
         game.hostagesKilled += 1
         totalHostageNum.text = String(game.hostagesLeft)
@@ -156,6 +232,7 @@ class ViewController: UIViewController {
     }
     
     func updateUIAfterOffer() {
+        soundEffect(death: false)
         var totalItemNum: Int = 12
         for case let button as UIButton in itemButtonView.subviews {
             for playerItem in game.playerItems {

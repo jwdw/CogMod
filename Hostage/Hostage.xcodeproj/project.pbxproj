@@ -22,6 +22,18 @@
 		396804AE2231462500DB8273 /* SlotCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AB2231462500DB8273 /* SlotCondition.swift */; };
 		396804AF2231462500DB8273 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AC2231462500DB8273 /* Tokenizer.swift */; };
 		396804B02231462500DB8273 /* SlotAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396804AD2231462500DB8273 /* SlotAction.swift */; };
+		39A4268B225363B600B1E9E0 /* hostage_soundtrack.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A4268D225363B600B1E9E0 /* hostage_soundtrack.wav */; };
+		39A4269822536B4300B1E9E0 /* free1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A4269A22536B4300B1E9E0 /* free1.wav */; };
+		39A4269B22536B4600B1E9E0 /* free2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A4269D22536B4600B1E9E0 /* free2.wav */; };
+		39A4269E22536B4C00B1E9E0 /* free3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426A022536B4C00B1E9E0 /* free3.wav */; };
+		39A426A122536B4F00B1E9E0 /* free4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426A322536B4F00B1E9E0 /* free4.wav */; };
+		39A426A422536B5300B1E9E0 /* free5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426A622536B5300B1E9E0 /* free5.wav */; };
+		39A426B322536B6700B1E9E0 /* die1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426B522536B6700B1E9E0 /* die1.wav */; };
+		39A426B622536B6B00B1E9E0 /* die2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426B822536B6B00B1E9E0 /* die2.wav */; };
+		39A426B922536B6E00B1E9E0 /* die3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426BB22536B6E00B1E9E0 /* die3.wav */; };
+		39A426BC22536B7100B1E9E0 /* die4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426BE22536B7100B1E9E0 /* die4.wav */; };
+		39A426BF22536B7400B1E9E0 /* die5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426C122536B7400B1E9E0 /* die5.wav */; };
+		39A426C222536B7700B1E9E0 /* die6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39A426C422536B7700B1E9E0 /* die6.wav */; };
 		9116AEA5222E92F300F2A6C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116AEA4222E92F300F2A6C9 /* Game.swift */; };
 		912D77702229285A00E43851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D776F2229285A00E43851 /* AppDelegate.swift */; };
 		912D77722229285A00E43851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912D77712229285A00E43851 /* ViewController.swift */; };
@@ -65,6 +77,18 @@
 		396804AB2231462500DB8273 /* SlotCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotCondition.swift; sourceTree = "<group>"; };
 		396804AC2231462500DB8273 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		396804AD2231462500DB8273 /* SlotAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotAction.swift; sourceTree = "<group>"; };
+		39A4268C225363B600B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/hostage_soundtrack.wav; sourceTree = "<group>"; };
+		39A4269922536B4300B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/free1.wav; sourceTree = "<group>"; };
+		39A4269C22536B4600B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/free2.wav; sourceTree = "<group>"; };
+		39A4269F22536B4C00B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/free3.wav; sourceTree = "<group>"; };
+		39A426A222536B4F00B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/free4.wav; sourceTree = "<group>"; };
+		39A426A522536B5300B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/free5.wav; sourceTree = "<group>"; };
+		39A426B422536B6700B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die1.wav; sourceTree = "<group>"; };
+		39A426B722536B6B00B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die2.wav; sourceTree = "<group>"; };
+		39A426BA22536B6E00B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die3.wav; sourceTree = "<group>"; };
+		39A426BD22536B7100B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die4.wav; sourceTree = "<group>"; };
+		39A426C022536B7400B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die5.wav; sourceTree = "<group>"; };
+		39A426C322536B7700B1E9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Base; path = Base.lproj/die6.wav; sourceTree = "<group>"; };
 		9116AEA4222E92F300F2A6C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		912D776C2229285A00E43851 /* Hostage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hostage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		912D776F2229285A00E43851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +130,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39A426882253627E00B1E9E0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				39A4268D225363B600B1E9E0 /* hostage_soundtrack.wav */,
+				39A4269A22536B4300B1E9E0 /* free1.wav */,
+				39A4269D22536B4600B1E9E0 /* free2.wav */,
+				39A426A022536B4C00B1E9E0 /* free3.wav */,
+				39A426A322536B4F00B1E9E0 /* free4.wav */,
+				39A426A622536B5300B1E9E0 /* free5.wav */,
+				39A426B522536B6700B1E9E0 /* die1.wav */,
+				39A426B822536B6B00B1E9E0 /* die2.wav */,
+				39A426BB22536B6E00B1E9E0 /* die3.wav */,
+				39A426BE22536B7100B1E9E0 /* die4.wav */,
+				39A426C122536B7400B1E9E0 /* die5.wav */,
+				39A426C422536B7700B1E9E0 /* die6.wav */,
+			);
+			name = Sounds;
+			path = Fonts/Fonts/Sounds;
+			sourceTree = "<group>";
+		};
 		39C2BA1322522B930016EEF2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +165,7 @@
 				912D778E2229285B00E43851 /* HostageUITests */,
 				912D776D2229285A00E43851 /* Products */,
 				39C2BA1322522B930016EEF2 /* Fonts */,
+				39A426882253627E00B1E9E0 /* Sounds */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,9 +330,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39A426B322536B6700B1E9E0 /* die1.wav in Resources */,
+				39A426B622536B6B00B1E9E0 /* die2.wav in Resources */,
+				39A4269822536B4300B1E9E0 /* free1.wav in Resources */,
+				39A426A422536B5300B1E9E0 /* free5.wav in Resources */,
 				912D777A2229285A00E43851 /* LaunchScreen.storyboard in Resources */,
+				39A4269E22536B4C00B1E9E0 /* free3.wav in Resources */,
 				912D77772229285A00E43851 /* Assets.xcassets in Resources */,
+				39A426BF22536B7400B1E9E0 /* die5.wav in Resources */,
+				39A426B922536B6E00B1E9E0 /* die3.wav in Resources */,
+				39A426A122536B4F00B1E9E0 /* free4.wav in Resources */,
+				39A4268B225363B600B1E9E0 /* hostage_soundtrack.wav in Resources */,
+				39A426C222536B7700B1E9E0 /* die6.wav in Resources */,
 				912D77752229285A00E43851 /* Main.storyboard in Resources */,
+				39A4269B22536B4600B1E9E0 /* free2.wav in Resources */,
+				39A426BC22536B7100B1E9E0 /* die4.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +422,102 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		39A4268D225363B600B1E9E0 /* hostage_soundtrack.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A4268C225363B600B1E9E0 /* Base */,
+			);
+			name = hostage_soundtrack.wav;
+			sourceTree = "<group>";
+		};
+		39A4269A22536B4300B1E9E0 /* free1.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A4269922536B4300B1E9E0 /* Base */,
+			);
+			name = free1.wav;
+			sourceTree = "<group>";
+		};
+		39A4269D22536B4600B1E9E0 /* free2.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A4269C22536B4600B1E9E0 /* Base */,
+			);
+			name = free2.wav;
+			sourceTree = "<group>";
+		};
+		39A426A022536B4C00B1E9E0 /* free3.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A4269F22536B4C00B1E9E0 /* Base */,
+			);
+			name = free3.wav;
+			sourceTree = "<group>";
+		};
+		39A426A322536B4F00B1E9E0 /* free4.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426A222536B4F00B1E9E0 /* Base */,
+			);
+			name = free4.wav;
+			sourceTree = "<group>";
+		};
+		39A426A622536B5300B1E9E0 /* free5.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426A522536B5300B1E9E0 /* Base */,
+			);
+			name = free5.wav;
+			sourceTree = "<group>";
+		};
+		39A426B522536B6700B1E9E0 /* die1.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426B422536B6700B1E9E0 /* Base */,
+			);
+			name = die1.wav;
+			sourceTree = "<group>";
+		};
+		39A426B822536B6B00B1E9E0 /* die2.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426B722536B6B00B1E9E0 /* Base */,
+			);
+			name = die2.wav;
+			sourceTree = "<group>";
+		};
+		39A426BB22536B6E00B1E9E0 /* die3.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426BA22536B6E00B1E9E0 /* Base */,
+			);
+			name = die3.wav;
+			sourceTree = "<group>";
+		};
+		39A426BE22536B7100B1E9E0 /* die4.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426BD22536B7100B1E9E0 /* Base */,
+			);
+			name = die4.wav;
+			sourceTree = "<group>";
+		};
+		39A426C122536B7400B1E9E0 /* die5.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426C022536B7400B1E9E0 /* Base */,
+			);
+			name = die5.wav;
+			sourceTree = "<group>";
+		};
+		39A426C422536B7700B1E9E0 /* die6.wav */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39A426C322536B7700B1E9E0 /* Base */,
+			);
+			name = die6.wav;
+			sourceTree = "<group>";
+		};
 		912D77732229285A00E43851 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
