@@ -108,11 +108,12 @@ class ViewController: UIViewController {
         if response.deal {
             updateUIAfterOffer()
         } else {
-            if game.numTurns >= game.gracePeriod {
+            if game.gracePeriod == 1 {
                 killHostage()
                 feedbackTextField.text.append(" I killed a hostage MUHAHAHAHAHA! \(game.prefAfterOffer(currOffer: offer))")
             } else {
-                feedbackTextField.text.append(" I will kill a hostage in " + String(game.gracePeriod - game.numTurns) + " turns if you don't make a better offer! \(game.prefAfterOffer(currOffer: offer))")
+                game.gracePeriod -= 1
+                feedbackTextField.text.append(" I will kill a hostage in " + String(game.gracePeriod) + " turns if you don't make a better offer! \(game.prefAfterOffer(currOffer: offer))")
             }
         }
         game.numTurns += 1
