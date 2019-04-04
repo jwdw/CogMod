@@ -21,6 +21,7 @@ struct Chunky {
     var score: Int = 0
     var value: Double = 0
     var decision: String = ""
+    var activation: Float = 1.0
     //TODO: activation/forgetting
 }
 
@@ -95,7 +96,7 @@ class Game {
             let chunkies = inString.components(separatedBy: "\n")
             for chunky in chunkies.dropLast() {
                 let values = chunky.components(separatedBy: ",")
-                memory.append(Chunky(score: Int(values[0])!, value: Double(values[1])!, decision: values[2]))
+                memory.append(Chunky(score: Int(values[0])!, value: Double(values[1])!, decision: values[2], activation: 1.0))
             }
             print(memory.count)
         }
@@ -175,15 +176,18 @@ class Game {
         var best_decision = ""
         for chunk in memory {
             var distance = pow(chunk.value - relativeGainForActr, 2)
-            distance += pow(Double(chunk.score - 9999), 2)
+            distance += pow((Double(chunk.score - 9999) / 10000), 2)
             if distance < min_dist {
                 min_dist = distance
                 best_decision = chunk.decision
                 //TODO: decide whether chunk is similar enough, so that random actions can be chosen sometimes
             }
+            print(chunk.value - relativeGainForActr)
+            print(Double(chunk.score - 9999) / 10000)
+            
         }
         
-        var feedbackChunk: Chunky = Chunky(score: 0, value: relativeGainForActr, decision: "")
+        var feedbackChunk: Chunky = Chunky(score: 0, value: relativeGainForActr, decision: "", activation: 1.0)
         
         chunkNum += 1
         
